@@ -1,13 +1,9 @@
-<div class ="TestCss">
-  <ngui-map
-  zoom="13"
-  center="37.775, -122.434"
-  (mapReady$)="onMapReady($event)"
-  (mapClick)="onMapClick($event)"
-  (idle)="onIdle($event)"
-  mapTypeId="satellite">
+<div>
+  <ngui-map zoom="14" center="Brampton, Canada">
   <marker *ngFor="let pos of positions"
-          [position]="pos"
-          (initialized$)="onMarkerInit($event)"></marker>
-</ngui-map>
-</div>
+          (click)="showInfoWindow($event)"
+          [position]="pos"></marker>
+  </ngui-map>
+  <button (click)="showRandomMarkers()">Show Random Markers</button>
+  <br/>
+  <button (click)="addMarker()">Add Marker</button></div>
