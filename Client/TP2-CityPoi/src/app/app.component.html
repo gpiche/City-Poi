@@ -2,7 +2,13 @@
   <ngui-map zoom="14" center="Brampton, Canada">
   <marker *ngFor="let pos of positions"
           (click)="showInfoWindow($event)"
-          [position]="pos"></marker>
+          [position]="pos"
+          [icon]="{
+               url:'http://emojipedia-us.s3.amazonaws.com/cache/bf/96/bf96f627ef7a073e48bc6f7c2f55df96.png',
+               scaledSize:[50,50],
+               origin: [10,10],
+               anchor: [50,50]
+           }"></marker>
   </ngui-map>
   <button (click)="showRandomMarkers()">Show Random Markers</button>
   <br/>
