@@ -5,10 +5,18 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NguiMapModule} from '@ngui/map';
+import { AdminisrationComponent } from './adminisration/adminisration.component';
+import { MapComponent } from './CityPoi/map/map.component';
+import { CitySearchComponent } from './CityPoi/city-search/city-search.component';
+import { PointOfInterestsComponent } from './CityPoi/point-of-interests/point-of-interests.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminisrationComponent,
+    MapComponent,
+    CitySearchComponent,
+    PointOfInterestsComponent
   ],
   imports: [
     BrowserModule,

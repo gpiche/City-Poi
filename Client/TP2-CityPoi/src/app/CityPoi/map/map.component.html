@@ -1,0 +1,15 @@
+<div>
+  <ngui-map class="Map"zoom="14" center="Brampton, Canada">
+    <marker *ngFor="let pos of positions"
+            (click)="showInfoWindow($event)"
+            [position]="pos"
+            [icon]="{
+               url:'https://68.media.tumblr.com/avatar_bd60d9cbb710_128.png',
+               scaledSize:[50,50],
+               origin: [10,10],
+               anchor: [50,50]
+           }"></marker>
+  </ngui-map>
+  <button class="ShowRandom" (click)="showRandomMarkers()">Show Random Markers</button>
+  <br/>
+  <button class="AddMarker"(click)="addMarker()">Add Marker</button></div>

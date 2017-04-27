@@ -1,0 +1,12 @@
+.Map{
+  width: 400px;
+  height:300px;
+  float: right;
+  margin-top: 100px;
+}
+
+.AddMarker{
+  float: right;
+  margin-top: 400px;
+  margin-left: 100px;
+}
