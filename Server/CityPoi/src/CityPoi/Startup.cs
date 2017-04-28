@@ -40,6 +40,8 @@ namespace CityPoi
             // Add framework services.
            // services.AddApplicationInsightsTelemetry(Configuration);
 
+            services.AddCors();
+
             services.AddMvc();
 
             services.AddScoped<ICityRepository, CityRepository>();
@@ -55,9 +57,17 @@ namespace CityPoi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-           // app.UseApplicationInsightsRequestTelemetry();
+            app.UseCors(builder => builder
+               .WithOrigins("http://localhost:4200")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials()
+             );
 
-           // app.UseApplicationInsightsExceptionTelemetry();
+
+            // app.UseApplicationInsightsRequestTelemetry();
+
+            // app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseMvc();
             apiDbContext.EnsureSeedDataForContext();
