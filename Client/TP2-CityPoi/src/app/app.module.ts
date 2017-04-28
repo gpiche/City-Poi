@@ -9,6 +9,10 @@ import { AdminisrationComponent } from './adminisration/adminisration.component'
 import { MapComponent } from './CityPoi/map/map.component';
 import { CitySearchComponent } from './CityPoi/city-search/city-search.component';
 import { PointOfInterestsComponent } from './CityPoi/point-of-interests/point-of-interests.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AuthenticationService} from './authentification/authentification.service';
+import {AuthenticationGuard} from './authentification/guard.service';
 
 @NgModule({
   declarations: [
@@ -16,16 +20,21 @@ import { PointOfInterestsComponent } from './CityPoi/point-of-interests/point-of
     AdminisrationComponent,
     MapComponent,
     CitySearchComponent,
-    PointOfInterestsComponent
+    PointOfInterestsComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyD5W8EzEuPsvvitGICxg0NvQ8TUHdNp4To'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyD5W8EzEuPsvvitGICxg0NvQ8TUHdNp4To'}),
+    AppRoutingModule
 
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    AuthenticationGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
