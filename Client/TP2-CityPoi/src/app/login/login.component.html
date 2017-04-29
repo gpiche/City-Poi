@@ -1,0 +1,6 @@
+<div>
+  <!--<button ">Get Token for Mickey</button>-->
+  <button id="login" (click)="onLoginClick()" *ngIf="!authentificationService.loggedIn()">Log In for Mickey</button>
+  <button id="logout" (click)="onLogoutClick()" *ngIf="authentificationService.loggedIn()">Log Out</button>
+
+</div>

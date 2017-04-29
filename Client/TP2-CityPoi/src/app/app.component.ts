@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import {Router} from '@angular/router';
+import {AuthenticationService} from './authentification/authentification.service';
+
+interface Credentials {
+  username: string,
+  password: string
+}
 
 @Component({
   selector: 'app-root',
@@ -13,7 +20,7 @@ export class AppComponent {
 
   constructor(private http: Http) {}
 
-  getCities() {
+    getCities() {
     const url = 'http://localhost:50467/api/cities';
 
     this.http.get(url)

@@ -4,12 +4,12 @@
     "preserveCompilationContext": true
   },
   "dependencies": {
-    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.2", 
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.2",
     "Microsoft.EntityFrameworkCore.Sqlite.Design": {
       "version": "1.0.2",
       "type": "build"
     },
-    "Microsoft.EntityFrameworkCore.Tools": { 
+    "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview4-final",
       "type": "build"
     },
@@ -25,6 +25,8 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.1",
+    "Microsoft.AspNetCore.Authentication.JwtBearer": "1.0.0",
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
       "type": "platform"

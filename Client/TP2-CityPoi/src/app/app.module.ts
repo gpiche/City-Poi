@@ -13,15 +13,18 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthenticationService} from './authentification/authentification.service';
 import {AuthenticationGuard} from './authentification/guard.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     AdminisrationComponent,
     MapComponent,
     CitySearchComponent,
     PointOfInterestsComponent,
-    UnauthorizedComponent
+    UnauthorizedComponent,
+
   ],
   imports: [
     BrowserModule,

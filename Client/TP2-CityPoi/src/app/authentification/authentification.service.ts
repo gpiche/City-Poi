@@ -17,7 +17,7 @@ export class AuthenticationService {
   login(credentials) {
     // Devrait retourner une promise ou un observable pour mieux gérer l'affichage.
     // Devrait être en HTTPS !
-    const url = 'http://localhost:3615/api/token';
+    const url = 'http://localhost:50467/api/token';
     const headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     const options = new RequestOptions({headers: headers});
 
