@@ -29,13 +29,24 @@ export class LoginComponent implements OnInit {
     };
 
     // devrait retourner une promise ou un observable pour mieux gérer l'affichage.
-    this.authentificationService.login(credentials);
+    this.authentificationService.login(credentials)
+      .then(response => this.goToMap());
+
   }
 
 
 
   onLogoutClick() {
     this.authentificationService.logout();
+    this.goBack();
+  }
+
+  goToMap(){
+    this.router.navigate(['map']);
+  }
+
+  goBack(){
+    this.router.navigate(['']);
   }
 
 

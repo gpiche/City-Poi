@@ -14,7 +14,7 @@ export class AuthenticationService {
   constructor(private http: Http) {
   }
 
-  login(credentials) {
+  login(credentials)  {
     // Devrait retourner une promise ou un observable pour mieux gérer l'affichage.
     // Devrait être en HTTPS !
     const url = 'http://localhost:50467/api/token';
@@ -26,12 +26,16 @@ export class AuthenticationService {
     urlSearchParams.append('password', credentials.password);
     const body = urlSearchParams.toString();
 
-    this.http.post(url, body, options)
-      .map(res => res.json())
-      .subscribe(
-        data => localStorage.setItem('token', data.access_token),
-        error => console.log(error)
-      );
+    return new Promise((resolve, reject) => {
+      this.http.post(url, body, options)
+        .map(res => res.json())
+        .subscribe(
+          data => {
+              localStorage.setItem('token', data.access_token),
+              resolve(data);
+          }, error => reject(error),
+        );
+    });
   }
 
   loggedIn() {

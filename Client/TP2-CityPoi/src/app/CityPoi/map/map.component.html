@@ -1,5 +1,5 @@
 <div>
-  <ngui-map class="Map" zoom="14" center="Quebec, Canada">
+  <ngui-map class="Map" zoom="14" center="Brampton, Canada">
     <marker   *ngFor="let pos of positions"
               on-mouseover ='onSelect($event)'
               on-mouseout = 'unSelect($event)'
@@ -8,6 +8,4 @@
 
     ></marker>
   </ngui-map>
-  <button (click)="showRandomMarkers()">Show Random Markers</button>
-  <br/>
-  <button (click)="addMarker()">Add Marker</button></div>
+

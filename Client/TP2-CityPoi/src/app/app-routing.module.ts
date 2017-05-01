@@ -8,7 +8,6 @@ import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 import {NgModule} from '@angular/core';
 
 export const routes: Routes = [
-  { path: 'map', component: MapComponent, canActivate: [AuthenticationGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent }
 ];
 
