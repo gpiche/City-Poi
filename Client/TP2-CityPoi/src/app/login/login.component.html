@@ -1,6 +1,15 @@
-<div>
-  <!--<button ">Get Token for Mickey</button>-->
-  <button id="login" (click)="onLoginClick()" *ngIf="!authentificationService.loggedIn()">Log In for Mickey</button>
-  <button id="logout" (click)="onLogoutClick()" *ngIf="authentificationService.loggedIn()">Log Out</button>
-
-</div>
+<main>
+  <div class="container">
+    <div class="heading">
+      <h1>Se connecter en tant qu'administrateur</h1>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
+      <legend>Login control</legend>
+      <label >Email</label>
+      <input [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur" aria-required="true" required >
+      <label >Password</label>
+      <input [(ngModel)]="password" type="password" name="password" placeholder="Mot de passe" aria-required="true" required ngModel>
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
+</main>

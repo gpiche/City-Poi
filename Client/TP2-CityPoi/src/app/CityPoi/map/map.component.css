@@ -10,3 +10,25 @@
   margin-top: 400px;
   margin-left: 100px;
 }
+
+
+a {
+  padding: 8px 15px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+a:visited, a:link {
+  color: #607D8B;
+}
+a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+a.active {
+  color: #039be5;
+}
+
+
