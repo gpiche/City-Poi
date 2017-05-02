@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../authentification/authentification.service";
 import {Router} from "@angular/router";
+import {NgForm} from "@angular/forms";
 
 
 interface Credentials {
@@ -22,27 +23,19 @@ export class LoginComponent implements OnInit {
     private router: Router,) {
   }
 
-  onLoginClick() {
+  onLoginClick(form: NgForm) {
     const credentials: Credentials = {
-      username : "Mickey",
-      password : "qwerty"
+      username : form.value.username,
+      password : form.value.password
     };
-
-    // devrait retourner une promise ou un observable pour mieux gérer l'affichage.
     this.authentificationService.login(credentials)
-      .then(response => this.goToMap());
+     .then(response => this.goToAdmin(),
+           error => console.log(error));
 
   }
 
-
-
-  onLogoutClick() {
-    this.authentificationService.logout();
-    this.goBack();
-  }
-
-  goToMap(){
-    this.router.navigate(['map']);
+  goToAdmin() {
+    this.router.navigate(['admin']);
   }
 
   goBack(){
