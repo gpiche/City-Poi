@@ -1,5 +1,7 @@
 <a routerLink="/login" routerLinkActive="active">Connexion</a>
 
+<app-city-search></app-city-search>
+
 <div>
   <ngui-map class="Map" zoom="14" center="Brampton, Canada">
     <marker   *ngFor="let pos of positions"

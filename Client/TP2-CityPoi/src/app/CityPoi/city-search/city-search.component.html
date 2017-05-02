@@ -1,3 +1,9 @@
-<div>
-  <input  id = "citySearch-box"/>
+<div id="CitySearch">
+  <input #searchBox  id="citySearch-box" (keyup)="search(searchBox.value)" />
+  <div>
+    <div *ngFor="let city of cities | async">
+      {{city.name}}
+    </div>
+  </div>
 </div>
+

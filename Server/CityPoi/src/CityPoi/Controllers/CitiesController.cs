@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CityPoi.DTOs;
 using CityPoi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace CityPoi.Controllers
     public class CitiesController : Controller
     {
         private ICityRepository CitiesRepository;
-      private EntitiesToDTO ToDto = new EntitiesToDTO();
+        private EntitiesToDTO ToDto = new EntitiesToDTO();
         private DtosToEntities toEntity = new DtosToEntities();
 
 
@@ -30,6 +31,7 @@ namespace CityPoi.Controllers
             return new ObjectResult(citiesDTO);
         }
 
+
         [HttpGet("{cityId}")]
         public IActionResult GetCity(int cityId, bool includePointsOfInterest)
         {
@@ -43,7 +45,6 @@ namespace CityPoi.Controllers
 
             if (!includePointsOfInterest)
             {
-
                 var cityWithoutPoiDTO = ToDto.ToCityWithoutPoiDto(city);
 
                 return new ObjectResult(cityWithoutPoiDTO);
@@ -51,12 +52,10 @@ namespace CityPoi.Controllers
 
             else
             {
-
                 var cityWithPoiDTO = ToDto.ToCityWithPoiDto(city);
 
                 return new ObjectResult(cityWithPoiDTO);
             }
-
         }
 
         [HttpGet("{cityId}/pointsOfInterest")]
@@ -67,9 +66,9 @@ namespace CityPoi.Controllers
                 return BadRequest();
             }
 
-           var pointsOfInterest =  CitiesRepository.GetPointsOfInterestForCity(cityId);
+            var pointsOfInterest = CitiesRepository.GetPointsOfInterestForCity(cityId);
 
-           var pointOfInterestDto = ToDto.ToPoiDto(pointsOfInterest);
+            var pointOfInterestDto = ToDto.ToPoiDto(pointsOfInterest);
 
             return new ObjectResult(pointOfInterestDto);
         }
@@ -79,23 +78,22 @@ namespace CityPoi.Controllers
         public IActionResult GetAPointOfInterestForCity(int cityId, int poiId)
         {
             if (!CitiesRepository.CityExists(cityId))
-            { 
+            {
                 return BadRequest();
             }
 
-          var pointOfInterest = CitiesRepository.GetPointOfInterestForCity(cityId, poiId);
-        
-            if(pointOfInterest == null) return BadRequest();
+            var pointOfInterest = CitiesRepository.GetPointOfInterestForCity(cityId, poiId);
+
+            if (pointOfInterest == null) return BadRequest();
 
             var pointOfInterestDto = ToDto.ToAPoiForACityDto(pointOfInterest);
             return new ObjectResult(pointOfInterestDto);
         }
 
 
-        [HttpPost("{cityId}/pointsOfInterest",Name = "GetCity")]
+        [HttpPost("{cityId}/pointsOfInterest", Name = "GetCity")]
         public IActionResult AddPointOfInterestForCity(int cityId, [FromBody] PoiDTO pointOfInterestData)
         {
-      
             if (!CitiesRepository.CityExists(cityId))
             {
                 return NotFound();
@@ -111,20 +109,18 @@ namespace CityPoi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var pointOfInterest = toEntity.ConvertToEntity(cityId,pointOfInterestData);
+            var pointOfInterest = toEntity.ConvertToEntity(cityId, pointOfInterestData);
 
 
-             CitiesRepository.AddPointOfInterestForCity(cityId,pointOfInterest);
+            CitiesRepository.AddPointOfInterestForCity(cityId, pointOfInterest);
 
-             return CreatedAtRoute("GetCity",new { id = pointOfInterest.Id },pointOfInterest);
-
+            return CreatedAtRoute("GetCity", new {id = pointOfInterest.Id}, pointOfInterest);
         }
 
 
         [HttpPut("{cityId}/pointsOfInterest/{id}")]
-        public IActionResult UpdatePointOfInterest(int cityId, int id,[FromBody] PoiDTO pointOfInterestData)
+        public IActionResult UpdatePointOfInterest(int cityId, int id, [FromBody] PoiDTO pointOfInterestData)
         {
-           
             if (!CitiesRepository.CityExists(cityId))
             {
                 return NotFound();
@@ -140,12 +136,12 @@ namespace CityPoi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var pointOfInterest = toEntity.ConvertToEntity(cityId,id,pointOfInterestData);
+            var pointOfInterest = toEntity.ConvertToEntity(cityId, id, pointOfInterestData);
 
 
-           CitiesRepository.UpdatePointOfInterest(pointOfInterest);
+            CitiesRepository.UpdatePointOfInterest(pointOfInterest);
 
-            return new NoContentResult();// Pourquoi NoContentResult ?
+            return new NoContentResult(); // Pourquoi NoContentResult ?
         }
 
 
@@ -173,13 +169,5 @@ namespace CityPoi.Controllers
 
             return new NoContentResult();
         }
-
-
-
-
     }
 }
-
-
-
-
