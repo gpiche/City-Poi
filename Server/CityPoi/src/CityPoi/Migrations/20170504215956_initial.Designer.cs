@@ -8,7 +8,7 @@ using CityPoi.DataAccesLayer;
 namespace CityPoi.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20170504224549_initial")]
+    [Migration("20170504215956_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
