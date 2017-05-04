@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
   title = 'MAP WORKS!';
- @Input  positions = [];
+  positions = [];
   redMarker = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
   blueMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 

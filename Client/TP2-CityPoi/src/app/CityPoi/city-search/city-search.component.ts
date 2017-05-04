@@ -52,7 +52,7 @@ export class CitySearchComponent implements OnInit {
       });
   }
 
-  getPoiForACity(id: number){
+  getPoiForACity(id: number) {
     this.poi = this.citySearchService.getPoiForACity(id);
   }
 }
