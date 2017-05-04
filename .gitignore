@@ -323,8 +323,12 @@ paket-files/
 # JetBrains Rider
 .idea/
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.sln.iml
 =======
 *.sln.iml
 
 >>>>>>> refs/remotes/origin/master
+=======
+*.sln.iml
+>>>>>>> origin/Dev-SearchBar
