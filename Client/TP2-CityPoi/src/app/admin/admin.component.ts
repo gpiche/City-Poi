@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import {AuthenticationService} from '../authentification/authentification.service';
 import {Router} from '@angular/router';
 import {City} from '../Shared/City';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-admin',
@@ -28,7 +29,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     return this.http
       .get(`http://localhost:50467/api/cities}`)
-      .map(response => response.json().data as City[]);
+      .switchMap(response => response.json().data as City[]);
   }
 
 }
