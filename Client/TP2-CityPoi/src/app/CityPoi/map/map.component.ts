@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
   title = 'MAP WORKS!';
-  positions = [];
+ @Input  positions = [];
   redMarker = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
   blueMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
+
 
   ngOnInit() {
 
@@ -21,5 +22,9 @@ export class MapComponent implements OnInit {
 
   unSelect(event) {
     event.target.setIcon(this.redMarker);
+  }
+
+  setMarkers(pos) {
+    this.positions = pos;
   }
 }

@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import {City} from '../../Shared/City';
+import {PointOfInterest} from '../../Shared/PointOfInterest';
 
 @Injectable()
 export class CitySearchService {
@@ -13,16 +14,13 @@ export class CitySearchService {
   constructor(private http: Http) {
   }
 
-  search(term: string): Promise<City[]> {
-    return new Promise((resolve, reject) => {
-      this.http.get(`http://localhost:50467/api/cities?name=${term}`)
+  search(term: string): Observable<City[]> {
+    return this.http.get(`http://localhost:50467/api/cities?name=${term}`)
         .map(res => res.json() as City[]) // <--------- Map the json I had forgot
-        .subscribe((results: City[]) => {
-          resolve(results);
-        }, (errorResponse: Response) => {
-          reject(errorResponse);
-        });
-    });
+  }
 
+  getPoiForACity(id: number): Observable<PointOfInterest[]>{
+    return this.http.get(`http://localhost:50467/api/cities/${id}/pointsOfInterest`)
+      .map(res => res.json() as PointOfInterest[]);
   }
 }

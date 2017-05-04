@@ -10,6 +10,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {CitySearchService} from './city-search.service';
 import {City} from '../../Shared/City';
+import {PointOfInterest} from '../../Shared/PointOfInterest';
 import 'rxjs/add/operator/switchMap';
 
 
@@ -22,6 +23,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class CitySearchComponent implements OnInit {
   cities: Observable<City[]>;
+  poi: Observable<PointOfInterest[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private citySearchService: CitySearchService,
@@ -30,6 +32,7 @@ export class CitySearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
+    this.poi = null;
     this.searchTerms.next(term);
   }
 
@@ -47,7 +50,9 @@ export class CitySearchComponent implements OnInit {
         console.log(error);
         return Observable.of<City[]>([]);
       });
+  }
 
-
+  getPoiForACity(id: number){
+    this.poi = this.citySearchService.getPoiForACity(id);
   }
 }

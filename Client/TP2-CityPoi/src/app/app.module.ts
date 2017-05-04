@@ -15,6 +15,7 @@ import {AuthenticationService} from './authentification/authentification.service
 import {AuthenticationGuard} from './authentification/guard.service';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AdminComponent } from './admin/admin.component';
     PointOfInterestsComponent,
     UnauthorizedComponent,
     AdminComponent,
+    DashboardComponent,
 
   ],
   imports: [
