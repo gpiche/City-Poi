@@ -1,1 +1,19 @@
-<button (click)=" onLogoutClick()">Deconnexion</button>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 id="adminCss">Bienvenue administrateur</h2>
+    </div>
+    <div class="col-sm-4">
+    <button id="logoutCss"(click)=" onLogoutClick()">Deconnexion</button>
+    </div>
+  </div>
+  <div class="row">
+    <button (click)="onClick()">show cities</button>
+    <ul class="cities">
+      <li *ngFor="let city of cities" >
+        <span>{{city.name}}</span>
+      </li>
+    </ul>
+  </div>
+</div>

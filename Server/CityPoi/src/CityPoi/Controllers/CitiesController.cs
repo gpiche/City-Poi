@@ -116,7 +116,6 @@ namespace CityPoi.Controllers
 
             var pointOfInterest = toEntity.ConvertToEntity(cityId, pointOfInterestData);
 
-
             CitiesRepository.AddPointOfInterestForCity(cityId, pointOfInterest);
 
             return CreatedAtRoute("GetCity", new {id = pointOfInterest.Id}, pointOfInterest);

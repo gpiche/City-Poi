@@ -1,3 +1,4 @@
+
 import {Component, OnInit, Pipe} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -9,10 +10,10 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {CitySearchService} from './city-search.service';
+
 import {City} from '../../Shared/City';
 import {PointOfInterest} from '../../Shared/PointOfInterest';
 import 'rxjs/add/operator/switchMap';
-
 
 
 @Component({
@@ -37,6 +38,7 @@ export class CitySearchComponent implements OnInit {
   }
 
   ngOnInit() {
+
      this.cities = this.searchTerms
       .debounceTime(300)        // wait 300ms after each keystroke before considering the term
       .distinctUntilChanged()   // ignore if next search term is same as previous

@@ -7,6 +7,7 @@ import {UnauthorizedComponent} from './unauthorized/unauthorized.component';
 import {NgModule} from '@angular/core';
 import {LoginComponent} from './login/login.component';
 import {AdminComponent} from './admin/admin.component';
+
 import {DashboardComponent} from './dashboard/dashboard.component'
 
 export const routes: Routes = [

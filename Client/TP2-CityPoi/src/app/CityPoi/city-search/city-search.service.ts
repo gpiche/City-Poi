@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+
 import {City} from '../../Shared/City';
 import {PointOfInterest} from '../../Shared/PointOfInterest';
 
@@ -22,5 +23,5 @@ export class CitySearchService {
   getPoiForACity(id: number): Observable<PointOfInterest[]>{
     return this.http.get(`http://localhost:50467/api/cities/${id}/pointsOfInterest`)
       .map(res => res.json() as PointOfInterest[]);
-  }
+}
 }

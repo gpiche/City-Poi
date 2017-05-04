@@ -19,13 +19,13 @@ namespace CityPoi.UnitTests.CityControllerTests
             //Arrange
             int nbOfCities = 4;
             var cities = CityFaker.Generate(nbOfCities);
-
+            string name = "";
             var citiesDTO = ToDTO.ToCitiesDto(cities);
 
             MockCityRepository.GetCities().Returns(cities); 
 
             //Action
-            var result = CityController.GetCities();
+            var result = CityController.GetCities(name);
 
 
             // Assert

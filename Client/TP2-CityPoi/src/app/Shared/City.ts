@@ -4,9 +4,9 @@ import {PointOfInterest} from './PointOfInterest';
  */
 
 export class City {
-  key: number
+  key: number;
   name: string;
   country: string;
   description: string;
-
+  pointOfInterest: PointOfInterest[];
 }

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authentificationService: AuthenticationService,
-    private router: Router,) {
+    private router: Router) {
   }
 
   onLoginClick(form: NgForm) {
