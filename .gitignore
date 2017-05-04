@@ -322,9 +322,4 @@ paket-files/
 
 # JetBrains Rider
 .idea/
-<<<<<<< HEAD
 *.sln.iml
-=======
-*.sln.iml
-
->>>>>>> refs/remotes/origin/master
