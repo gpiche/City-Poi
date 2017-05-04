@@ -1,9 +1,17 @@
 <div id="CitySearch">
   <input #searchBox  id="citySearch-box" (keyup)="search(searchBox.value)" />
-  <div>
-    <div *ngFor="let city of cities | async">
+    <div *ngIf="poi == null">
+    <div *ngFor="let city of cities | async"
+        (click) = "getPoiForACity(city.key)" class = "search-result">
       {{city.name}}
     </div>
+    </div>
+  </div>
+
+
+
+<div *ngIf="poi != null" id="Poi">
+  <div *ngFor="let pointOfInterest of poi | async" class = "tab-content">
+    {{pointOfInterest .name}}
   </div>
 </div>
-

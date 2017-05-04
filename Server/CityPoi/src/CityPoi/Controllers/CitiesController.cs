@@ -22,9 +22,14 @@ namespace CityPoi.Controllers
 
 
         [HttpGet]
-        public IActionResult GetCities()
+        public IActionResult GetCities(string name)
         {
             var cities = CitiesRepository.GetCities(); // retourne toute la collection 
+
+            if (name != null)
+            {
+                cities = cities.Where(city => city.Name.Contains(name));
+            }
 
             var citiesDTO = ToDto.ToCitiesDto(cities);
 
@@ -110,7 +115,6 @@ namespace CityPoi.Controllers
             }
 
             var pointOfInterest = toEntity.ConvertToEntity(cityId, pointOfInterestData);
-
 
             CitiesRepository.AddPointOfInterestForCity(cityId, pointOfInterest);
 

@@ -9,5 +9,4 @@ export class City {
   country: string;
   description: string;
   pointOfInterest: PointOfInterest[];
-
 }
