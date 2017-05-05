@@ -4,6 +4,7 @@ import { Http } from '@angular/http';
 import {AuthenticationService} from '../authentification/authentification.service';
 import {Router} from '@angular/router';
 import {City} from '../Shared/City';
+import {PointOfInterest} from '../Shared/PointOfInterest';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import {CitySearchService} from '../CityPoi/city-search/city-search.service';
@@ -18,6 +19,7 @@ import {CitySearchService} from '../CityPoi/city-search/city-search.service';
 export class AdminComponent implements OnInit {
 
   cities: Observable<City[]>;
+  poi: Observable<PointOfInterest[]>;
   constructor(private authentificationService: AuthenticationService,
               private router: Router,
               private citySearchService: CitySearchService)
@@ -34,5 +36,10 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.cities = this.citySearchService.getCities();
   }
+
+  getPoiForACity(id: number) {
+    this.poi = this.citySearchService.getPoiForACity(id);
+  }
+
 
 }
