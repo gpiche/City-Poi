@@ -1,5 +1,7 @@
 <app-map
   [positions]="position"
+  [name] = "name"
+  [country]="country"
 ></app-map>
 <app-city-search
   (pointOfInterest) = "handlePointOfInterest($event)"

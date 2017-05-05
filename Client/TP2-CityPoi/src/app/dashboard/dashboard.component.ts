@@ -11,6 +11,8 @@ import {City} from '../Shared/City';
 })
 export class DashboardComponent implements OnInit {
 pointOfInterest: Observable<PointOfInterest[]>;
+name: string;
+country: string;
 
 position = [];
   constructor() { }
@@ -18,6 +20,11 @@ position = [];
   handlePointOfInterest(pointOfInterest: Observable<PointOfInterest[]>) {
     this.pointOfInterest = pointOfInterest;
     this.initialisePosition();
+  }
+
+  handleCity(city: City) {
+    this.name = city.name;
+    this.country = city.country;
   }
 
 
