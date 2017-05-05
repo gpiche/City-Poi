@@ -10,7 +10,7 @@
   </div>
   <div class="row">
     <ul class="cities">
-      <li *ngFor="let city of cities" >
+      <li *ngFor="let city of cities  | async " >
         <span>{{city.name}}</span>
       </li>
     </ul>

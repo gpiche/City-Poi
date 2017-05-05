@@ -5,17 +5,22 @@ import {AuthenticationService} from '../authentification/authentification.servic
 import {Router} from '@angular/router';
 import {City} from '../Shared/City';
 import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import {CitySearchService} from '../CityPoi/city-search/city-search.service';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+  providers: [CitySearchService]
 })
+
 export class AdminComponent implements OnInit {
 
-  constructor(private http: Http,
-              private authentificationService: AuthenticationService,
-              private router: Router)
+  cities: Observable<City[]>;
+  constructor(private authentificationService: AuthenticationService,
+              private router: Router,
+              private citySearchService: CitySearchService)
   {}
   onLogoutClick() {
     this.authentificationService.logout();
@@ -27,9 +32,7 @@ export class AdminComponent implements OnInit {
 }
 
   ngOnInit() {
-    return this.http
-      .get(`http://localhost:50467/api/cities}`)
-      .switchMap(response => response.json().data as City[]);
+    this.cities = this.citySearchService.getCities();
   }
 
 }

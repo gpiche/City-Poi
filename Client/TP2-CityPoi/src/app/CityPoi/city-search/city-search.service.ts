@@ -16,10 +16,14 @@ export class CitySearchService {
   }
 
   search(term: string): Observable<City[]> {
-    return this.http.get(`http://localhost:50467/api/cities?name=${term}`)
-        .map(res => res.json() as City[]) // <--------- Map the json I had forgot
-  }
+  return this.http.get(`http://localhost:50467/api/cities?name=${term}`)
+    .map(res => res.json() as City[]); // <--------- Map the json I had forgot
+}
 
+  getCities(): Observable<City[]> {
+    return this.http.get(`http://localhost:50467/api/cities`)
+      .map(res => res.json() as City[]); // <--------- Map the json I had forgot
+  }
   getPoiForACity(id: number): Observable<PointOfInterest[]>{
     return this.http.get(`http://localhost:50467/api/cities/${id}/pointsOfInterest`)
       .map(res => res.json() as PointOfInterest[]);
