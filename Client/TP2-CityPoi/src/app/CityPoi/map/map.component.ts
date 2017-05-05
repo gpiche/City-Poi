@@ -26,7 +26,7 @@ export class MapComponent implements OnInit {
 
   onMarkerInit(event){
     let map = event.map;
-    var geocoder =  new Geocoder();
+    let geocoder =  new Geocoder();
     let adress = this.name + ',' + this.country;
     geocoder.geocode( { 'address': adress }, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {

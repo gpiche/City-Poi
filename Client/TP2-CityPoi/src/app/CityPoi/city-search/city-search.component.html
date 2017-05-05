@@ -1,12 +1,17 @@
 
-<div id="CitySearch">
-  <h1>Rechercher une ville:</h1>
-  <input #searchBox  id="citySearch-box" (keyup)="search(searchBox.value)" />
-  <div *ngFor="let city of cities | async"
-        (click) = "getPoiForACity(city)" class = "search-result">
-      {{city.name}}
+<div>
+  <h2>Rechercher une ville</h2>
+<input #searchBox (keyup)="search(searchBox.value)">
+<div *ngIf="selectedCity == null">
+  <div class="list-group">
+    <a class="list-group-item search-result" *ngFor="let city of cities | async"
+        (click) = "getPoiForACity(city)"
+        (click) = "addSelectedCity(searchBox)">
+        {{city.name}}</a>
   </div>
   </div>
+</div>
+
 
 
 

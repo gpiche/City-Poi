@@ -1,28 +1,32 @@
-.module {
-  padding: 10px;
-  text-align: center;
-  color: #eee;
-  max-height: 125px;
-  min-width: 125px;
-  background-color: #607D8B;
-  border-radius: 2px;
+
+.poi {
+  margin-top: 100px;
+  margin-left: 100px;
+  list-style-type: none;
+  padding: 0px;
+  width: 20em;
 }
-.module:hover {
-  background-color: #EEE;
+.poi li {
   cursor: pointer;
-  color: #607d8b;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: 1em 0;
+  height: 3em;
+  border-radius: 4px;
+}
+.poi li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.poi li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.poi .text {
+  position: relative;
 }
 
-.container{
-  width: 300px;
-  height: 300px;
-  float: left;
-}
-
-.grid-pad {
-  margin-left: 220px;
-  margin-top: 200px;
-  width:400px;
-  padding: 10px 0;
-}
 

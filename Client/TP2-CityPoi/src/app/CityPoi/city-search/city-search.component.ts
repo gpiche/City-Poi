@@ -23,6 +23,7 @@ import 'rxjs/add/operator/switchMap';
   providers: [CitySearchService]
 })
 export class CitySearchComponent implements OnInit {
+  selectedCity: City;
   cities: Observable<City[]>;
   poi: Observable<PointOfInterest[]>;
   @Output()
@@ -37,6 +38,7 @@ export class CitySearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
+    this.selectedCity = null;
     this.searchTerms.next(term);
   }
 
@@ -58,8 +60,13 @@ export class CitySearchComponent implements OnInit {
   }
 
   getPoiForACity(city: City) {
+    this.selectedCity = city;
     this.poi = this.citySearchService.getPoiForACity(city.key);
     this.pointOfInterest.emit(this.poi);
     this.cityEmitter.emit(city);
+  }
+
+  addSelectedCity(input: HTMLInputElement){
+    input.value = this.selectedCity.name;
   }
 }

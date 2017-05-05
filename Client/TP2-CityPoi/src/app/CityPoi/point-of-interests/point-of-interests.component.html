@@ -1,12 +1,9 @@
 
 
-<div class="grid grid-pad" >
-  <h1>Point d'intérets</h1>
-<div *ngFor="let pointOfInterest of pointOfInterests | async" class = "tab-content">
-  <div class="module">
-      <h4> {{pointOfInterest.name}}</h4>
-    </div>
-  </div>
-</div>
+<ul class="poi">
+<li *ngFor="let pointOfInterest of pointOfInterests | async">
+  <span>{{pointOfInterest.name}}</span>
+  </li>
+</ul>
 
 
