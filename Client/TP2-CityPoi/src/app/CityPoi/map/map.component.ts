@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-map',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
   title = 'MAP WORKS!';
+  @Input()
   positions = [];
   redMarker = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
   blueMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
@@ -24,7 +25,6 @@ export class MapComponent implements OnInit {
     event.target.setIcon(this.redMarker);
   }
 
-  setMarkers(pos) {
-    this.positions = pos;
-  }
+
+
 }

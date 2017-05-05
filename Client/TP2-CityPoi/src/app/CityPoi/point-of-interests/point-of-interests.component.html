@@ -1,3 +1,7 @@
-<p>
-  point-of-interests works!
-</p>
+
+
+  <div *ngFor="let pointOfInterest of pointOfInterests | async" class = "tab-content">
+    {{pointOfInterest.name}}
+  </div>
+
+

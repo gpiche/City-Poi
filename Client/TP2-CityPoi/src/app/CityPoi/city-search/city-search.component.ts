@@ -1,5 +1,5 @@
 
-import {Component, OnInit, Pipe} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Pipe} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -23,8 +23,13 @@ import 'rxjs/add/operator/switchMap';
   providers: [CitySearchService]
 })
 export class CitySearchComponent implements OnInit {
+  selectedCity: City;
   cities: Observable<City[]>;
   poi: Observable<PointOfInterest[]>;
+  @Output()
+   cityEmitter: EventEmitter<City> = new EventEmitter<City>();
+  @Output()
+  pointOfInterest: EventEmitter<Observable<PointOfInterest[]>> =  new EventEmitter<Observable<PointOfInterest[]>>();
   private searchTerms = new Subject<string>();
 
   constructor(private citySearchService: CitySearchService,
@@ -33,7 +38,6 @@ export class CitySearchComponent implements OnInit {
 
   // Push a search term into the observable stream.
   search(term: string): void {
-    this.poi = null;
     this.searchTerms.next(term);
   }
 
@@ -54,7 +58,9 @@ export class CitySearchComponent implements OnInit {
       });
   }
 
-  getPoiForACity(id: number) {
-    this.poi = this.citySearchService.getPoiForACity(id);
+  getPoiForACity(city: City) {
+    this.poi = this.citySearchService.getPoiForACity(city.key);
+    this.pointOfInterest.emit(this.poi);
+    this.cityEmitter.emit(this.selectedCity);
   }
 }
