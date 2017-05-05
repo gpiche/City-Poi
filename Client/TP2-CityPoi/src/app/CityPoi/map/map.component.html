@@ -1,6 +1,6 @@
 <a routerLink="/login" routerLinkActive="active">Connexion</a>
 
-  <ngui-map class="Map" center="" >
+  <ngui-map class="Map" zoom="11" center="" >
     <marker   *ngFor="let pos of positions"
               on-mouseover ='onSelect($event)'
               on-mouseout = 'unSelect($event)'

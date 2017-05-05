@@ -1,4 +1,6 @@
+
 <div id="CitySearch">
+  <h1>Rechercher une ville:</h1>
   <input #searchBox  id="citySearch-box" (keyup)="search(searchBox.value)" />
   <div *ngFor="let city of cities | async"
         (click) = "getPoiForACity(city)" class = "search-result">

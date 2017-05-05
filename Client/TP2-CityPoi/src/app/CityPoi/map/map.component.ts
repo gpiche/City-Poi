@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {City} from '../../Shared/City';
+import LatLng = google.maps.LatLng;
+import Geocoder = google.maps.Geocoder;
 
 @Component({
   selector: 'app-map',
@@ -24,9 +26,14 @@ export class MapComponent implements OnInit {
 
   onMarkerInit(event){
     let map = event.map;
-    if (this.name != null && this.country != null) {
-      map.setCenter(this.positions[0]);
-    }
+    var geocoder =  new Geocoder();
+    let adress = this.name + ',' + this.country;
+    geocoder.geocode( { 'address': adress }, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        let position = new LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+        map.setCenter(position);
+      }
+    });
   }
 
   onSelect(event) {
