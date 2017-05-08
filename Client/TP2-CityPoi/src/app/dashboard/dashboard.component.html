@@ -10,9 +10,13 @@
       (pointOfInterest) = "handlePointOfInterest($event)"
       (cityEmitter)="handleCity($event)"
     ></app-city-search>
-    <app-point-of-interests [pointOfInterests]="pointOfInterest" class="col-lg-3" ></app-point-of-interests>
+    <app-point-of-interests
+      class="col-lg-3"
+      [pointOfInterests]="pointOfInterest"
+    ></app-point-of-interests>
     <app-map
   class="col-lg-0map"
+  (hiddenMarker)="handleHiddenMarkers($event)"
   [positions]="position"
   [name] = "name"
   [country]="country"

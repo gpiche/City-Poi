@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PointOfInterest} from '../Shared/PointOfInterest';
 import {Observable} from "rxjs";
 import {City} from '../Shared/City';
+import LatLng = google.maps.LatLng;
 
 
 @Component({
@@ -11,8 +12,10 @@ import {City} from '../Shared/City';
 })
 export class DashboardComponent implements OnInit {
 pointOfInterest: Observable<PointOfInterest[]>;
+filteredPointOfInterest: Observable<PointOfInterest[]>;
 name: string;
 country: string;
+
 
 position = [];
   constructor() { }
@@ -25,6 +28,19 @@ position = [];
   handleCity(city: City) {
     this.name = city.name;
     this.country = city.country;
+  }
+
+  handleHiddenMarkers(positions: LatLng[]) {
+
+    if (positions !== null) {
+      for (const coord of positions) {
+       this.pointOfInterest =  this.pointOfInterest
+          .map(data => data.filter(poi =>
+            parseFloat(poi.latitude) !== coord.lat() && parseFloat(poi.longitude) !== coord.lng())
+          );
+      }
+
+    }
   }
 
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {City} from '../../Shared/City';
 import LatLng = google.maps.LatLng;
 import Geocoder = google.maps.Geocoder;
@@ -16,6 +16,9 @@ export class MapComponent implements OnInit {
     name: string;
   @Input()
     country: string;
+  @Output()
+  hiddenMarker: EventEmitter<LatLng[]> = new EventEmitter<LatLng[]>();
+  coordinate: LatLng[] = [];
   redMarker = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
   blueMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
@@ -31,9 +34,24 @@ export class MapComponent implements OnInit {
     geocoder.geocode( { 'address': adress }, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         let position = new LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-        map.setCenter(position);
+        map.panTo(position);
       }
     });
+  }
+
+  checkBounds(event){
+    const map = event.target;
+    const markers = map.markers;
+    const mapBounds = map.getBounds();
+
+    for (const marker of markers){
+      const  markerPosition = marker.getPosition();
+      if (!mapBounds.contains(markerPosition)) {
+          this.coordinate.push(markerPosition);
+      }
+    }
+    this.hiddenMarker.emit(this.coordinate);
+    this.coordinate = [];
   }
 
   onSelect(event) {
