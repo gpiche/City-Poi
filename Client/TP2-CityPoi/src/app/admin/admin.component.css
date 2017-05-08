@@ -1,24 +1,43 @@
-/*body{
-  background-color: powderblue;
-  height: 500px;
-}
-#admin {
-  font-family: Calibri;
+.cities li:hover {
+  color: deeppink;
+  width: 200px;
   font-style: italic;
+
+}
+
+.cities .cityName{
+  list-style: none;
+  width: 250px;
+  background-color: lavenderblush;
+  height: 100px;
+  font-size: large;
   text-align: center;
+  margin-left: 50px;
+}
+
+.poi li:hover {
+  color: deeppink;
+  width: 200px;
+
+}
+
+.poi .poiName{
+  list-style: none;
+  width: 250px;
+  background-color: lavenderblush;
+  height: 100px;
+  font-size: large;
+}
+
+.cities .text {
+  position: relative;
+  top: -3px;
   color: red;
 }
-#adminCss{
-  margin-top: 20px;
+
+
+button.delete {
+  margin-left: 200px;
+  background-color: gray !important;
+  color:white;
 }
-
-
-#logoutCss{
-  align: right;
-}
-#header{
-  align: center;
-  background-image: url(http://grassgreener.co.uk/wp-content/uploads/2014/05/technology_2560-x-720.jpg);
-  height: 100px;
-}*/
-
