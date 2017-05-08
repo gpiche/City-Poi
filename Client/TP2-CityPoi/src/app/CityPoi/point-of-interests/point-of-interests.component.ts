@@ -15,15 +15,18 @@ export class PointOfInterestsComponent implements OnInit, OnChanges {
   @Input()
   pointOfInterests: Observable<PointOfInterest[]>;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    const timer = Observable.timer(200, 100);
+    timer.subscribe(t => {
+      this.ngOnChanges(t);
+    });
   }
 
-  ngOnChanges() {
-
-  }
+  ngOnChanges(change) {}
 
 
-  }
+}
 
