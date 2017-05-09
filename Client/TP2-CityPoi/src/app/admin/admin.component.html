@@ -15,14 +15,17 @@
   <div class="row">
     <div class="col-md-4">
      <ul class="cities">
-        <li *ngFor="let city of cities  | async " (click)="getPoiForACity(city.key)">
+        <li *ngFor="let city of cities  | async " (click)="getPoiForACity(city.key)"
+            (click)="onSelectCity(city)"
+            [class.selected]="city === selectedCity">
           <span class="cityName">{{city.name}}</span>
         </li>
       </ul>
     </div>
     <div class="col-md-4">
       <ul class="poi">
-        <li *ngFor="let pointOfInterest of poi | async">
+        <li *ngFor="let pointOfInterest of poi | async" (click)="onSelectPoi(pointOfInterest)"
+            [class.selected]="pointOfInterest === selectedPoi">
           <span class="poiName">{{pointOfInterest.name}}</span>
           <button class="delete" (click)="openModal(pointOfInterest.name); $event.stopPropagation()">supprimer</button>
         </li>

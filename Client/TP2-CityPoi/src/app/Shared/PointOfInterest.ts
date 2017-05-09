@@ -3,6 +3,7 @@
  */
 
 export class PointOfInterest{
+  id: number;
   name: string;
   latitude: string;
   longitude: string;

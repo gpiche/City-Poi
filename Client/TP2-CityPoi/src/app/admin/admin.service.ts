@@ -2,17 +2,13 @@
  * Created by Remikya Hellal on 2017-05-05.
  */
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-
-import {City} from '../Shared/City';
+import { Headers, Http } from '@angular/http';
 import {PointOfInterest} from '../Shared/PointOfInterest';
-
 @Injectable()
 export class AdminService {
-
+  private headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) {
   }
 
@@ -21,9 +17,9 @@ export class AdminService {
     return Promise.reject(error.message || error);
   }
 
-  delete(cityId: number, poiId: number): Promise<void> {
+  delete(cityId: number, poiId: number, pointOfInterest: PointOfInterest): Promise<void> {
     const url = `http://localhost:50467/api/cities/${cityId}/pointsOfInterest/${poiId}`;
-    return this.http.delete(url)
+    return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
