@@ -1,3 +1,24 @@
-<app-map>
-</app-map>
-<app-city-search></app-city-search>
+
+<div class="container-fluid">
+  <div class="row">
+    <a routerLink="/login" routerLinkActive="active" class="col-lg-11">Connexion</a>
+  </div>
+  <div class="row col-lg-12"></div>
+  <div class="row">
+    <app-city-search
+      class=" col-lg-3 search"
+      (pointOfInterest) = "handlePointOfInterest($event)"
+      (cityEmitter)="handleCity($event)"
+    ></app-city-search>
+    <app-point-of-interests [pointOfInterests]="pointOfInterest" class="col-lg-3" ></app-point-of-interests>
+    <app-map
+  class="col-lg-0map"
+  [positions]="position"
+  [name] = "name"
+  [country]="country"
+></app-map>
+  </div>
+</div>
+
+
+

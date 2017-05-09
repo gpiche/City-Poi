@@ -29,10 +29,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
   ],
   imports: [
+    NguiMapModule.forRoot({apiUrl: 'https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyD5W8EzEuPsvvitGICxg0NvQ8TUHdNp4To'}),
     BrowserModule,
     FormsModule,
     HttpModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyD5W8EzEuPsvvitGICxg0NvQ8TUHdNp4To'}),
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule

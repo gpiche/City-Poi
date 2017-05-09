@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {PointOfInterest} from '../../Shared/PointOfInterest';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-point-of-interests',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./point-of-interests.component.css']
 })
 export class PointOfInterestsComponent implements OnInit {
+
+  @Input()
+  pointOfInterests: Observable<PointOfInterest[]>;
 
   constructor() { }
 
