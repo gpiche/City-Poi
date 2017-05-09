@@ -1,6 +1,6 @@
 
 
-  <ngui-map class="Map" zoom="11" center=""  (idle) = "checkBounds($event)">
+  <ngui-map class="Map" zoom="11" center=""  (idle) = "checkBounds($event)" (mapReady$)="onMapReady($event)">
     <marker   *ngFor="let pos of positions"
               on-mouseover ='onSelect($event)'
               on-mouseout = 'unSelect($event)'

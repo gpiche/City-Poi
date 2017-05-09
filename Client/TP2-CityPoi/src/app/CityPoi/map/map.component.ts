@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {City} from '../../Shared/City';
 import LatLng = google.maps.LatLng;
 import Geocoder = google.maps.Geocoder;
+import {PointOfInterest} from "../../Shared/PointOfInterest";
 
 @Component({
   selector: 'app-map',
@@ -16,15 +17,31 @@ export class MapComponent implements OnInit {
     name: string;
   @Input()
     country: string;
+  @Input()
+  selectedPoi: PointOfInterest;
   @Output()
   hiddenMarker: EventEmitter<LatLng[]> = new EventEmitter<LatLng[]>();
+  map;
   coordinate: LatLng[] = [];
   redMarker = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
   blueMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
 
   ngOnInit() {
+   this.changeMarkerColor()
+  }
+  onMapReady(event){
+    this.map = event.target;
+  }
 
+  changeMarkerColor(){
+    if (this.selectedPoi !== null) {
+      for (const marker of this.map.markers) {
+        if (marker.lat() === this.selectedPoi.latitude && marker.lng() === this.selectedPoi.longitude) {
+          marker.setIcon(this.blueMarker);
+        }
+      }
+    }
   }
 
   onMarkerInit(event){
@@ -46,7 +63,7 @@ export class MapComponent implements OnInit {
 
     for (const marker of markers){
       const  markerPosition = marker.getPosition();
-      if (!mapBounds.contains(markerPosition)) {
+      if (mapBounds.contains(markerPosition)) {
           this.coordinate.push(markerPosition);
       }
     }

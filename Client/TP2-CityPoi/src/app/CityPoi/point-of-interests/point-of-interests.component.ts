@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {PointOfInterest} from '../../Shared/PointOfInterest';
 import {Observable} from "rxjs";
 import LatLng = google.maps.LatLng;
@@ -11,21 +11,27 @@ import LatLng = google.maps.LatLng;
 })
 
 export class PointOfInterestsComponent implements OnInit, OnChanges {
-
   @Input()
   pointOfInterests: Observable<PointOfInterest[]>;
+  @Output()
+  poiEmitter: EventEmitter<PointOfInterest> = new EventEmitter<PointOfInterest>()
 
   constructor() {
   }
 
   ngOnInit() {
-    const timer = Observable.timer(200, 100);
+    const timer = Observable.timer(10, 10);
     timer.subscribe(t => {
       this.ngOnChanges(t);
     });
+
   }
 
   ngOnChanges(change) {}
+
+  changeMarkerColor(event) {
+    this.poiEmitter.emit(event.target);
+  }
 
 
 }

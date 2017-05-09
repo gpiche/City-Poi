@@ -12,9 +12,10 @@ import LatLng = google.maps.LatLng;
 })
 export class DashboardComponent implements OnInit {
 pointOfInterest: Observable<PointOfInterest[]>;
-filteredPointOfInterest: Observable<PointOfInterest[]>;
+listOfPoi: PointOfInterest[] = [];
 name: string;
 country: string;
+selectedPoi: PointOfInterest;
 
 
 position = [];
@@ -32,15 +33,23 @@ position = [];
 
   handleHiddenMarkers(positions: LatLng[]) {
 
-    if (positions !== null) {
-      for (const coord of positions) {
-       this.pointOfInterest =  this.pointOfInterest
-          .map(data => data.filter(poi =>
-            parseFloat(poi.latitude) !== coord.lat() && parseFloat(poi.longitude) !== coord.lng())
-          );
+      const newList = [];
+      for (const coord of positions){
+        for (const poi of this.listOfPoi){
+          if ( parseFloat(poi.latitude) === coord.lat() && parseFloat(poi.longitude) === coord.lng()) {
+                newList.push(poi);
+          }
+        }
+       }
+        this.pointOfInterest = this.pointOfInterest
+          .map(data => data = newList)
       }
 
-    }
+
+
+
+  changeMarkerColor(event){
+    this.selectedPoi = event.target;
   }
 
 
@@ -50,6 +59,7 @@ position = [];
      .subscribe((data) => {
      for (const poi of data){
        this.position.push([poi.latitude, poi.longitude]);
+       this.listOfPoi.push(poi);
      }
      });
   }
