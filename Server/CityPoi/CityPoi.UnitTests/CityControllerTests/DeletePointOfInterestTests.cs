@@ -22,6 +22,7 @@ namespace CityPoi.UnitTests.CityControllerTests
             var anyPoi = anyCity.PointsOfInterests.FirstOrDefault();
             var poiDTO = new PoiDTO()
             {
+                Id = anyPoi.Id,
                 Name = "Château de Versaille",
                 Descritption = "La planque à Marie Antoinette",
                 Latitude = "48° 41\' 25.79\" N",
@@ -47,6 +48,7 @@ namespace CityPoi.UnitTests.CityControllerTests
              anyPoi.Id = 1;
              var poiDTO = new PoiDTO()
              {
+                 Id = anyPoi.Id,
                  Name = "Château de Versaille",
                  Descritption = "La planque à Marie Antoinette",
                  Latitude = "80.090",

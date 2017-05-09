@@ -6,6 +6,7 @@ namespace CityPoi.DTOs
 {
     public class PoiDTO 
     {
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

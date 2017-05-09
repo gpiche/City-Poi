@@ -56,6 +56,7 @@ namespace CityPoi.DTOs
         {
             var poiDTO= pointsOfInterest.Select(pointOfInterest=> new PoiDTO()
             {
+                Id = pointOfInterest.Id,
                 Name = pointOfInterest.Name,
                 Descritption = pointOfInterest.Descritption,
                 Latitude = pointOfInterest.Latitude,
@@ -70,6 +71,7 @@ namespace CityPoi.DTOs
         {
             var pointOfInterestDto = new PoiDTO()
             {
+                Id = pointOfInterest.Id,
                 Name = pointOfInterest.Name,
                 Descritption = pointOfInterest.Descritption,
                 Longitude = pointOfInterest.Longitude,
