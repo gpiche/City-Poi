@@ -22,10 +22,9 @@
     </div>
     <div class="col-md-4">
       <ul class="poi">
-        <li *ngFor="let pointOfInterest of poi | async"  (click)="getPoiForACity(city.key)">
+        <li *ngFor="let pointOfInterest of poi | async">
           <span class="poiName">{{pointOfInterest.name}}</span>
-          <button class="delete"
-                  (click)="delete(pointOfInterest.name); $event.stopPropagation()">supprimer</button>
+          <button class="delete" (click)="openModal(pointOfInterest.name); $event.stopPropagation()">supprimer</button>
         </li>
       </ul>
     </div>

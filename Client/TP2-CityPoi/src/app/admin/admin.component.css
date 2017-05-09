@@ -1,43 +1,66 @@
 .cities li:hover {
   color: deeppink;
-  width: 200px;
   font-style: italic;
-
+  border-style: solid;
+  border-color: deeppink;
 }
-
-.cities .cityName{
-  list-style: none;
-  width: 250px;
+.cities {
+  margin-top: 100px;
+  margin-left: 100px;
+  list-style-type: none;
+  padding: 0px;
+  width: 20em;
+}
+.cities li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
   background-color: lavenderblush;
-  height: 100px;
+  margin: .5em;
+  padding: 1em 0;
+  height: 3em;
+  border-radius: 4px;
+}
+.cities .cityName{
+  background-color: lavenderblush;
   font-size: large;
-  text-align: center;
-  margin-left: 50px;
+  margin-left: 100px;
 }
 
 .poi li:hover {
   color: deeppink;
-  width: 200px;
-
+  font-style: italic;
+  border-style: solid;
+  border-color: deeppink;
 }
 
-.poi .poiName{
-  list-style: none;
-  width: 250px;
-  background-color: lavenderblush;
-  height: 100px;
-  font-size: large;
+.poi {
+  margin-top: 100px;
+  margin-left: 100px;
+  list-style-type: none;
+  padding: 0px;
+  width: 30em;
 }
-
-.cities .text {
+.poi li {
+  cursor: pointer;
   position: relative;
-  top: -3px;
-  color: red;
+  left: 0;
+  background-color: lavenderblush;
+  margin: .5em;
+  padding: 1em 0;
+  height: 3em;
+  border-radius: 4px;
 }
+.poi .poiName{
+  background-color: lavenderblush;
+  font-size: large;
+  margin-left: 100px;
 
+}
 
 button.delete {
-  margin-left: 200px;
+  margin-left: 400px;
+  margin-bottom: 100px;
   background-color: gray !important;
   color:white;
 }

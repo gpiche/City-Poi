@@ -24,8 +24,10 @@ export class CitySearchService {
     return this.http.get(`http://localhost:50467/api/cities`)
       .map(res => res.json() as City[]); // <--------- Map the json I had forgot
   }
+
   getPoiForACity(id: number): Observable<PointOfInterest[]>{
     return this.http.get(`http://localhost:50467/api/cities/${id}/pointsOfInterest`)
       .map(res => res.json() as PointOfInterest[]);
-}
+  }
+
 }
