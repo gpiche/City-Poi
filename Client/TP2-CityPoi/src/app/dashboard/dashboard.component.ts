@@ -17,9 +17,6 @@ name: string;
 country: string;
 selectedPoi: PointOfInterest;
 
-
-
-position = [];
   constructor() { }
 
   handlePointOfInterest(pointOfInterest: Observable<PointOfInterest[]>) {
@@ -49,18 +46,16 @@ position = [];
 
 
 
-  changeMarkerColor(poi: PointOfInterest){
+  changeMarkerColor(poi: LatLng){
     this.selectedPoi = poi;
   }
 
 
   initialisePosition(){
-    this.position = [];
     this.listOfPoi = [];
    this.pointOfInterest
      .subscribe((data) => {
      for (const poi of data){
-       this.position.push([poi.latitude, poi.longitude]);
        this.listOfPoi.push(poi);
      }
      });

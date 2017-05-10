@@ -13,7 +13,7 @@ import {isUndefined} from "util";
 })
 export class MapComponent implements OnInit, OnChanges {
   @Input()
-  positions = [];
+  positions: PointOfInterest[];
   @Input()
     name: string;
   @Input()
@@ -41,11 +41,13 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(change){
+    this.changeMarkerColor(this.selectedPoi);
   }
 
 
   changeMarkerColor(poi: PointOfInterest){
     this.selectedPoi = poi;
+    console.log(this.selectedPoi);
   }
 
   onMarkerInit(event){
