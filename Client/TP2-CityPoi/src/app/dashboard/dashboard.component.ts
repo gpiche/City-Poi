@@ -46,7 +46,7 @@ selectedPoi: PointOfInterest;
 
 
 
-  changeMarkerColor(poi: LatLng){
+  changeMarkerColor(poi: PointOfInterest){
     this.selectedPoi = poi;
   }
 
