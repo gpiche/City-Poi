@@ -1,16 +1,17 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {City} from '../../Shared/City';
 import LatLng = google.maps.LatLng;
 import Geocoder = google.maps.Geocoder;
 import {PointOfInterest} from "../../Shared/PointOfInterest";
+import {Observable} from "rxjs";
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements OnInit {
-  title = 'MAP WORKS!';
+export class MapComponent implements OnInit, OnChanges {
   @Input()
   positions = [];
   @Input()
@@ -27,21 +28,24 @@ export class MapComponent implements OnInit {
   blueMarker = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 
 
-  ngOnInit() {
-   this.changeMarkerColor()
-  }
-  onMapReady(event){
-    this.map = event.target;
+  onMapReady(map){
+    console.log('map', map);
+    this.map = map;
   }
 
-  changeMarkerColor(){
-    if (this.selectedPoi !== null) {
-      for (const marker of this.map.markers) {
-        if (marker.lat() === this.selectedPoi.latitude && marker.lng() === this.selectedPoi.longitude) {
-          marker.setIcon(this.blueMarker);
-        }
-      }
-    }
+  ngOnInit() {
+    const timer = Observable.timer(10, 10);
+    timer.subscribe(t => {
+      this.ngOnChanges(t);
+    });
+  }
+
+  ngOnChanges(change){
+  }
+
+
+  changeMarkerColor(poi: PointOfInterest){
+    this.selectedPoi = poi;
   }
 
   onMarkerInit(event){

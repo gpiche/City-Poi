@@ -25,3 +25,4 @@ export class CitySearchService {
       .map(res => res.json() as PointOfInterest[]);
 }
 }
+

@@ -18,6 +18,7 @@ country: string;
 selectedPoi: PointOfInterest;
 
 
+
 position = [];
   constructor() { }
 
@@ -42,19 +43,20 @@ position = [];
         }
        }
         this.pointOfInterest = this.pointOfInterest
-          .map(data => data = newList)
+          .map(data => data = newList);
       }
 
 
 
 
-  changeMarkerColor(event){
-    this.selectedPoi = event.target;
+  changeMarkerColor(poi: PointOfInterest){
+    this.selectedPoi = poi;
   }
 
 
   initialisePosition(){
     this.position = [];
+    this.listOfPoi = [];
    this.pointOfInterest
      .subscribe((data) => {
      for (const poi of data){
