@@ -1,12 +1,11 @@
-<a routerLink="/login" routerLinkActive="active">Connexion</a>
 
-<div>
-  <ngui-map class="Map" zoom="14" center="Brampton, Canada">
+
+  <ngui-map class="Map" zoom="11" center=""  (idle) = "checkBounds($event)" (mapReady$)="onMapReady($event)">
     <marker   *ngFor="let pos of positions"
-              on-mouseover ='onSelect($event)'
-              on-mouseout = 'unSelect($event)'
-              [position]="pos"
-              icon = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-
+              on-mouseover ='changeMarkerColor(pos)'
+              on-mouseout = 'changeMarkerColor(null)'
+              [position]="[pos.latitude, pos.longitude]"
+              [icon] = "{ url : pos == selectedPoi ? 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' : 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'}"
+              (initialized$)="onMarkerInit($event)"
     ></marker>
   </ngui-map>
