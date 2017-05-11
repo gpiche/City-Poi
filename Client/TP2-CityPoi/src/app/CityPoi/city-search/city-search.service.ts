@@ -17,7 +17,7 @@ export class CitySearchService {
 
   search(term: string): Observable<City[]> {
     return this.http.get(`http://localhost:50467/api/cities?name=${term}`)
-        .map(res => res.json() as City[]) // <--------- Map the json I had forgot
+        .map(res => res.json() as City[])
   }
 
   getPoiForACity(id: number): Observable<PointOfInterest[]>{

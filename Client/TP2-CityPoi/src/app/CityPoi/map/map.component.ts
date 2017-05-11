@@ -34,10 +34,7 @@ export class MapComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    const timer = Observable.timer(10, 10);
-    timer.subscribe(t => {
-      this.ngOnChanges(t);
-    });
+
   }
 
   ngOnChanges(change){
@@ -47,7 +44,6 @@ export class MapComponent implements OnInit, OnChanges {
 
   changeMarkerColor(poi: PointOfInterest){
     this.selectedPoi = poi;
-    console.log(this.selectedPoi);
   }
 
   onMarkerInit(event){
