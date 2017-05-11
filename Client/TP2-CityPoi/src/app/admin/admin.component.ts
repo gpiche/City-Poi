@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 
 import { Http } from '@angular/http';
 import {AuthenticationService} from '../authentification/authentification.service';
@@ -9,6 +9,7 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import {CitySearchService} from '../CityPoi/city-search/city-search.service';
 import {ModalService} from '../Shared/modal.service';
+import {ToastrService} from "../Shared/toastr.service";
 import {AdminService} from './admin.service';
 import {ViewContainerRef} from '@angular/core';
 
@@ -16,10 +17,10 @@ import {ViewContainerRef} from '@angular/core';
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css'],
-  providers: [CitySearchService, ModalService, AdminService]
+  providers: [CitySearchService, ModalService, AdminService, ToastrService]
 })
 
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnChanges {
 
   cities: Observable<City[]>;
   poi: Observable<PointOfInterest[]>;
@@ -32,6 +33,7 @@ export class AdminComponent implements OnInit {
               private citySearchService: CitySearchService,
               private adminService: AdminService,
               private modalService: ModalService,
+              private toastrService: ToastrService,
               private viewContainerRef: ViewContainerRef)
   {modalService.setOverlayToViewContainer(viewContainerRef);}
 
@@ -47,7 +49,13 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.cities = this.citySearchService.getCities();
+    const timer = Observable.timer(10, 10);
+    timer.subscribe(t => {
+      this.ngOnChanges(t);
+    });
   }
+
+  ngOnChanges(change){}
 
   onSelectCity(city: City): void {
   this.selectedCity = city;
@@ -64,8 +72,10 @@ export class AdminComponent implements OnInit {
 
   openModal(message: string) {
     this.modalService.confirm(message, ' Supprimer ')
-      /*.then(this.delete(this.selectedCity.key, this.selectedPoi.id))*/
-      .then(result => this.delete(this.selectedCity.key, this.selectedPoi.id))
+      .then(() => {
+        this.delete(this.selectedCity.key, this.selectedPoi.id)
+        this.toastrService.success('The point of interest has been successfuly deleted');
+      })
       .catch(result => this.resultModalWindow = false);
   }
 

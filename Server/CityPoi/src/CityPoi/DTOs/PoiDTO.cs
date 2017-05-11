@@ -10,10 +10,10 @@ namespace CityPoi.DTOs
         [Required]
         public string Name { get; set; }
         [Required]
-        [RegularExpression(@"^-?([1-8]?[1-9]|[1-9]0)\.{1}\d{1,6}")]
+        [RegularExpression("-?([0-8]?[0-9][,.][0-9]+|90[,.]0+)")]
         public string Latitude { get; set; }
         [Required]
-        [RegularExpression(@"^-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.{1}\d{1,6}")]
+        [RegularExpression("-?((1[0-7]|[0-9])?[0-9][,.][0-9]+|180[,.]0+)")]
         public string Longitude { get; set; }
         public string Descritption { get; set; }
 

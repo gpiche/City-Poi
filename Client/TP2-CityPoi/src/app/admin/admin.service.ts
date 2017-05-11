@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import { Headers, Http } from '@angular/http';
 import {PointOfInterest} from '../Shared/PointOfInterest';
+import {RequestOptions, Request, RequestMethod} from '@angular/http';
 @Injectable()
 export class AdminService {
   private headers = new Headers({'Content-Type': 'application/json'});
@@ -19,7 +20,10 @@ export class AdminService {
 
   delete(cityId: number, poiId: number, pointOfInterest: PointOfInterest): Promise<void> {
     const url = `http://localhost:50467/api/cities/${cityId}/pointsOfInterest/${poiId}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http.delete(url, new RequestOptions({
+      headers: this.headers,
+      body: pointOfInterest
+    }))
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
