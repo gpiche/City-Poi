@@ -13,8 +13,8 @@
              <app-point-of-interests
                       class="col-lg-3"
                       [pointOfInterests]="pointOfInterest"
-                      (selectedPoiEmitter)="changeMarkerColor($event)">
-
+                      (selectedPoiEmitter)="changeMarkerColor($event)"
+                      (infoWindow)="showInfoWindow($event)">
              </app-point-of-interests>
              <app-map
                        class="col-lg-0map"
@@ -22,7 +22,8 @@
                        [positions]="listOfPoi"
                        [name] = "name"
                        [country]="country"
-                       [selectedPoi]="selectedPoi">
+                       [selectedPoi]="selectedPoi"
+                       [clickedPoi]="clickedPoi">
              </app-map>
       </div>
 </div>

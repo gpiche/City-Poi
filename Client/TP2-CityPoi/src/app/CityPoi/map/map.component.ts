@@ -3,8 +3,8 @@ import {City} from '../../Shared/City';
 import LatLng = google.maps.LatLng;
 import Geocoder = google.maps.Geocoder;
 import {PointOfInterest} from "../../Shared/PointOfInterest";
-import {Observable} from "rxjs";
-import {isUndefined} from "util";
+import InfoWindow = google.maps.InfoWindow;
+
 
 @Component({
   selector: 'app-map',
@@ -22,6 +22,8 @@ export class MapComponent implements OnInit, OnChanges {
   selectedPoi: PointOfInterest;
   @Output()
   hiddenMarker: EventEmitter<LatLng[]> = new EventEmitter<LatLng[]>();
+  @Input()
+    clickedPoi: PointOfInterest;
   map;
   coordinate: LatLng[] = [];
   redMarker = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
@@ -39,8 +41,31 @@ export class MapComponent implements OnInit, OnChanges {
 
   ngOnChanges(change){
     this.changeMarkerColor(this.selectedPoi);
+    if(this.clickedPoi !== null && typeof this.clickedPoi !== 'undefined') {
+      this.infoWindow(this.clickedPoi);
+    }
   }
 
+  infoWindow(poi: PointOfInterest){
+
+    var contentString = '<div id="content">' +
+      '<div id="siteNotice">' +
+        '<div' +
+      '</div>' + '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDvxGceA1mrFKBFrr9vboIlQxgrwK3QOgn01omSp9MaC_Oixdd" alt="some_text" style="width:100px;height:100px;">' +
+      '<h3 >' + poi.name + '</h3>' +
+      '</div>' +
+      '<div id="bodyContent">' +
+      poi.descritption +
+      '</div>' +
+        '<button class="bg-primary">Voir les détails</button>' +
+      '</div>';
+    const infoWindow = new InfoWindow()
+    const position = new LatLng(parseFloat(poi.latitude), parseFloat(poi.longitude));
+    infoWindow.setPosition(position);
+    infoWindow.setContent(contentString);
+    infoWindow.open(this.map);
+    this.clickedPoi = null;
+  }
 
   changeMarkerColor(poi: PointOfInterest){
     this.selectedPoi = poi;
@@ -72,15 +97,4 @@ export class MapComponent implements OnInit, OnChanges {
     this.hiddenMarker.emit(this.coordinate);
     this.coordinate = [];
   }
-
-  onSelect(event) {
-    event.target.setIcon(this.blueMarker);
-  }
-
-  unSelect(event) {
-    event.target.setIcon(this.redMarker);
-  }
-
-
-
 }

@@ -15,6 +15,8 @@ export class PointOfInterestsComponent implements OnInit, OnChanges {
   pointOfInterests: Observable<PointOfInterest[]>;
   @Output()
   selectedPoiEmitter: EventEmitter<PointOfInterest> = new EventEmitter<PointOfInterest>()
+  @Output()
+  infoWindow: EventEmitter<PointOfInterest> = new EventEmitter<PointOfInterest>();
 
   constructor() {
   }
@@ -31,6 +33,10 @@ export class PointOfInterestsComponent implements OnInit, OnChanges {
 
   changeMarkerColor(poi: PointOfInterest) {
     this.selectedPoiEmitter.emit(poi);
+  }
+
+  showInfoWindow(poi: PointOfInterest){
+    this.infoWindow.emit(poi);
   }
 
 
