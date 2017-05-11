@@ -80,6 +80,9 @@ namespace CityPoi.UnitTests.CityControllerTests
             var city = CityFaker.Generate();
             var pointOfInterest = city.PointsOfInterests.First();
             pointOfInterest.Name = null;
+            pointOfInterest.Latitude = "48.55655855";
+            pointOfInterest.Longitude = "-70.5598523";
+
 
             var modelStateValidity = ValidatePoi(pointOfInterest);
 
@@ -113,9 +116,9 @@ namespace CityPoi.UnitTests.CityControllerTests
         }
 
         [Theory]
-        [InlineData("-91")]
-        [InlineData("0")]
-        [InlineData("90")]
+        [InlineData("91.0")]
+        [InlineData("-945.0")]
+        [InlineData("90.68847896")]
         public void ModelSate_LatitudeWithBadFormat_ReturnFalse(string latitude)
         {
             var city = CityFaker.Generate();
@@ -129,7 +132,7 @@ namespace CityPoi.UnitTests.CityControllerTests
 
         [Theory]
         [InlineData("-98.0923913")]
-        [InlineData("181")]
+        [InlineData("185.22545222")]
         [InlineData("180")]
         public void ModelSate_LongitudeWithBadFormat_ReturnFalse(string longitude)
         {

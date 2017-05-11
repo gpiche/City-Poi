@@ -1,24 +1,66 @@
-/*body{
-  background-color: powderblue;
-  height: 500px;
-}
-#admin {
-  font-family: Calibri;
+.cities li:hover {
+  color: deeppink;
   font-style: italic;
-  text-align: center;
-  color: red;
+  border-style: solid;
+  border-color: deeppink;
 }
-#adminCss{
-  margin-top: 20px;
+.cities {
+  margin-top: 100px;
+  margin-left: 100px;
+  list-style-type: none;
+  padding: 0px;
+  width: 20em;
+}
+.cities li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: lavenderblush;
+  margin: .5em;
+  padding: 1em 0;
+  height: 3em;
+  border-radius: 4px;
+}
+.cities .cityName{
+  background-color: lavenderblush;
+  font-size: large;
+  margin-left: 100px;
 }
 
-
-#logoutCss{
-  align: right;
+.poi li:hover {
+  color: deeppink;
+  font-style: italic;
+  border-style: solid;
+  border-color: deeppink;
 }
-#header{
-  align: center;
-  background-image: url(http://grassgreener.co.uk/wp-content/uploads/2014/05/technology_2560-x-720.jpg);
-  height: 100px;
-}*/
 
+.poi {
+  margin-top: 100px;
+  margin-left: 100px;
+  list-style-type: none;
+  padding: 0px;
+  width: 30em;
+}
+.poi li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: lavenderblush;
+  margin: .5em;
+  padding: 1em 0;
+  height: 3em;
+  border-radius: 4px;
+}
+.poi .poiName{
+  background-color: lavenderblush;
+  font-size: large;
+  margin-left: 100px;
+
+}
+
+button.delete {
+  margin-left: 400px;
+  margin-bottom: 100px;
+  background-color: gray !important;
+  color:white;
+}

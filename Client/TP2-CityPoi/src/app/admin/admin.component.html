@@ -1,18 +1,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-md-9">
       <h2 id="adminCss">Bienvenue administrateur</h2>
     </div>
-    <div class="col-sm-4">
+    <div class="col-lg-3">
     <button id="logoutCss"(click)=" onLogoutClick()">Deconnexion</button>
     </div>
   </div>
+  <div class ="row">
+    <br>
+    <br>
+  </div>
   <div class="row">
-    <ul class="cities">
-      <li *ngFor="let city of cities" >
-        <span>{{city.name}}</span>
-      </li>
-    </ul>
+    <div class="col-md-4">
+     <ul class="cities">
+        <li *ngFor="let city of cities  | async " (click)="getPoiForACity(city.key)"
+            (click)="onSelectCity(city)"
+            [class.selected]="city === selectedCity">
+          <span class="cityName">{{city.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <ul class="poi">
+        <li *ngFor="let pointOfInterest of poi | async">
+          <span class="poiName">{{pointOfInterest.name}}</span>
+          <button class="delete"
+                  (click)="onSelectPoi(pointOfInterest)"
+                  [class.selected]="pointOfInterest === selectedPoi"
+                  (click)="openModal(pointOfInterest.name);
+                  $event.stopPropagation()">supprimer</button>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

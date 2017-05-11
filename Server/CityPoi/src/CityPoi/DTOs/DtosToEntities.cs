@@ -17,6 +17,9 @@ namespace CityPoi.DTOs
                 Id = poiId,
                 CityId = cityId,
                 Descritption = pointOfInterestDto.Descritption,
+                FullDescritption = pointOfInterestDto.FullDescription,
+                Logo = pointOfInterestDto.Logo,
+                Picture = pointOfInterestDto.Picture,
                 Longitude = pointOfInterestDto.Longitude,
                 Latitude = pointOfInterestDto.Latitude,
                 Name = pointOfInterestDto.Name
@@ -29,8 +32,12 @@ namespace CityPoi.DTOs
         {
             var pointOfInterest = new PointOfInterest()
             {
-               CityId = cityId,
+                Id = pointOfInterestDto.Id,
+                CityId = cityId,
                 Descritption = pointOfInterestDto.Descritption,
+                FullDescritption = pointOfInterestDto.FullDescription,
+                Logo = pointOfInterestDto.Logo,
+                Picture = pointOfInterestDto.Picture,
                 Longitude = pointOfInterestDto.Longitude,
                 Latitude = pointOfInterestDto.Latitude,
                 Name = pointOfInterestDto.Name
