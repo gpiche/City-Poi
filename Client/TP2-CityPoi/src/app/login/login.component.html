@@ -5,7 +5,6 @@
     </div>
     <form #loginForm="ngForm" (ngSubmit)="onLoginClick(loginForm)">
       <legend>Login control</legend>
-      <label >Email</label>
       <input [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur" aria-required="true" required >
       <label >Password</label>
       <input [(ngModel)]="password" type="password" name="password" placeholder="Mot de passe" aria-required="true" required ngModel>

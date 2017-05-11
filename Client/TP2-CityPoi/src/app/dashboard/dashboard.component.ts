@@ -16,6 +16,7 @@ listOfPoi: PointOfInterest[] = [];
 name: string;
 country: string;
 selectedPoi: PointOfInterest;
+clickedPoi: PointOfInterest;
 
   constructor() { }
 
@@ -48,6 +49,10 @@ selectedPoi: PointOfInterest;
 
   changeMarkerColor(poi: PointOfInterest){
     this.selectedPoi = poi;
+  }
+
+  showInfoWindow(poi: PointOfInterest){
+    this.clickedPoi = poi;
   }
 
 

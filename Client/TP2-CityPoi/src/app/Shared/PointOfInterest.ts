@@ -6,5 +6,5 @@ export class PointOfInterest{
   name: string;
   latitude: string;
   longitude: string;
-  description: string;
+  descritption: string;
 }

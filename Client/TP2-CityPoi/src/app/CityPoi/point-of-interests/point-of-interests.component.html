@@ -3,7 +3,8 @@
 <ul class="poi">
 <li *ngFor="let pointOfInterest of pointOfInterests | async "
     on-mouseover="changeMarkerColor(pointOfInterest)"
-    on-mouseout="changeMarkerColor(null)">
+    on-mouseout="changeMarkerColor(null)"
+    (click) = "showInfoWindow(pointOfInterest)">
   <span>{{pointOfInterest.name}}</span>
   </li>
 </ul>
