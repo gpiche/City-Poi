@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {PointOfInterest} from '../Shared/PointOfInterest';
 import {Observable} from "rxjs";
 import {City} from '../Shared/City';
+import LatLng = google.maps.LatLng;
 
 
 @Component({
@@ -11,10 +12,11 @@ import {City} from '../Shared/City';
 })
 export class DashboardComponent implements OnInit {
 pointOfInterest: Observable<PointOfInterest[]>;
+listOfPoi: PointOfInterest[] = [];
 name: string;
 country: string;
+selectedPoi: PointOfInterest;
 
-position = [];
   constructor() { }
 
   handlePointOfInterest(pointOfInterest: Observable<PointOfInterest[]>) {
@@ -27,13 +29,34 @@ position = [];
     this.country = city.country;
   }
 
+  handleHiddenMarkers(positions: LatLng[]) {
+
+      const newList = [];
+      for (const coord of positions){
+        for (const poi of this.listOfPoi){
+          if ( parseFloat(poi.latitude) === coord.lat() && parseFloat(poi.longitude) === coord.lng()) {
+                newList.push(poi);
+          }
+        }
+       }
+        this.pointOfInterest = this.pointOfInterest
+          .map(data => data = newList);
+      }
+
+
+
+
+  changeMarkerColor(poi: PointOfInterest){
+    this.selectedPoi = poi;
+  }
+
 
   initialisePosition(){
-    this.position = [];
+    this.listOfPoi = [];
    this.pointOfInterest
      .subscribe((data) => {
      for (const poi of data){
-       this.position.push([poi.latitude, poi.longitude]);
+       this.listOfPoi.push(poi);
      }
      });
   }
