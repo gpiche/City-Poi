@@ -157,7 +157,7 @@ namespace CityPoi.Controllers
                 return NotFound();
             }
 
-            if (pointOfInterestData == null || id == 0)
+            if (id == 0)
             {
                 return BadRequest();
             }

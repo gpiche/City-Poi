@@ -31,9 +31,12 @@ namespace CityPoi.Migrations
                         .Annotation("Autoincrement", true),
                     CityId = table.Column<int>(nullable: false),
                     Descritption = table.Column<string>(nullable: true),
+                    FullDescritption = table.Column<string>(nullable: true),
                     Latitude = table.Column<string>(nullable: false),
+                    Logo = table.Column<string>(nullable: true),
                     Longitude = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false)
+                    Name = table.Column<string>(nullable: false),
+                    Picture = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

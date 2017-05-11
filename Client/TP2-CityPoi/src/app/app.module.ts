@@ -15,6 +15,9 @@ import {AuthenticationGuard} from './authentification/guard.service';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {ModalService} from './Shared/modal.service';
+import {ModalModule} from 'angular2-modal';
+import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,11 +38,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BootstrapModalModule,
+    ModalModule.forRoot(),
   ],
   providers: [
     AuthenticationService,
     AuthenticationGuard,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })
