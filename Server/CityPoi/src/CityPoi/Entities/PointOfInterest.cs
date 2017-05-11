@@ -20,6 +20,10 @@ namespace CityPoi.Entities
 
         public string Descritption { get; set; }
 
+        public string FullDescritption { get; set; }
+
+        public string Picture { get; set; }
+
         [ForeignKey("CityId")]
         public int CityId { get; set; }
        

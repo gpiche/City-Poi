@@ -9,7 +9,7 @@ import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import {CitySearchService} from '../CityPoi/city-search/city-search.service';
 import {ModalService} from '../Shared/modal.service';
-import {ToastrService} from "../Shared/toastr.service";
+import {ToastrService} from '../Shared/toastr.service';
 import {AdminService} from './admin.service';
 import {ViewContainerRef} from '@angular/core';
 
