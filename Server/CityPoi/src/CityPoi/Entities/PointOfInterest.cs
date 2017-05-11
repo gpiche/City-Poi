@@ -22,6 +22,8 @@ namespace CityPoi.Entities
 
         public string FullDescritption { get; set; }
 
+        public string Logo { get; set; }
+
         public string Picture { get; set; }
 
         [ForeignKey("CityId")]

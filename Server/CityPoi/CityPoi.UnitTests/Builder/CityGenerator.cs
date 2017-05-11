@@ -34,7 +34,10 @@ namespace CityPoi.UnitTests.Builder
                 .RuleFor(poi => poi.Name, f => f.Lorem.ToString())
                 .RuleFor(poi => poi.Latitude, f => f.Address.Latitude().ToString())
                 .RuleFor(poi => poi.Longitude, f => f.Address.Longitude().ToString())
-                .RuleFor(poi => poi.Descritption, f => f.Lorem.ToString());
+                .RuleFor(poi => poi.Descritption, f => f.Lorem.ToString())
+                .RuleFor(poi => poi.FullDescritption, f => f.Lorem.ToString())
+                .RuleFor(poi => poi.Logo, f => f.Lorem.ToString())
+                .RuleFor(poi => poi.Picture, f => f.Lorem.ToString());
 
             CityFaker = new Faker<City>(locale: "fr")
                 .RuleFor(city => city.Name, f => f.Address.City().ToString())

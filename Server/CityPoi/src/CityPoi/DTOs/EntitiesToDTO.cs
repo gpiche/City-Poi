@@ -59,6 +59,9 @@ namespace CityPoi.DTOs
                 Id = pointOfInterest.Id,
                 Name = pointOfInterest.Name,
                 Descritption = pointOfInterest.Descritption,
+                FullDescription = pointOfInterest.FullDescritption,
+                Logo = pointOfInterest.Logo,
+                Picture = pointOfInterest.Picture,
                 Latitude = pointOfInterest.Latitude,
                 Longitude = pointOfInterest.Longitude,
 
@@ -74,6 +77,9 @@ namespace CityPoi.DTOs
                 Id = pointOfInterest.Id,
                 Name = pointOfInterest.Name,
                 Descritption = pointOfInterest.Descritption,
+                FullDescription = pointOfInterest.FullDescritption,
+                Logo = pointOfInterest.Logo,
+                Picture = pointOfInterest.Picture,
                 Longitude = pointOfInterest.Longitude,
                 Latitude = pointOfInterest.Latitude,
 
