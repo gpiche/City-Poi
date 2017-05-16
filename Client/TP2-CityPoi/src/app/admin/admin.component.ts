@@ -74,9 +74,9 @@ export class AdminComponent implements OnInit, OnChanges {
     this.modalService.confirm(message, ' Supprimer ')
       .then(() => {
         this.delete(this.selectedCity.key, this.selectedPoi.id)
-        this.toastrService.success('The point of interest has been successfuly deleted');
+        this.toastrService.success('Success');
       })
-      .catch(result => this.resultModalWindow = false);
+      .catch(() => this.toastrService.error('Canceled'));
   }
 
   delete(cityId: number, poiId: number){
