@@ -1,3 +1,28 @@
+#global {
+  border: solid;
+  border-color: black;
+  height: 3000px;
+}
+#header {
+  border: solid;
+  border-color: black;
+  height: 100px;
+}
+
+#title {
+  margin-top: 10px;
+  font-family: cursive;
+}
+#logoutCss{
+  background-color: lavenderblush;
+  border: solid;
+  color: black;
+  height: 50px;
+  width:150px;
+  margin-top: 25px;
+}
+
+
 .cities li:hover {
   color: deeppink;
   font-style: italic;
@@ -17,7 +42,6 @@
   left: 0;
   background-color: lavenderblush;
   margin: .5em;
-  padding: 1em 0;
   height: 3em;
   border-radius: 4px;
 }
