@@ -33,5 +33,26 @@ namespace CityPoi.UnitTests.CityControllerTests
              .Which.Value.ShouldBeEquivalentTo(citiesDTO);
         }
 
+        [Fact]
+        public void GetAll_ForASpecificCity_ReturnTheCityDTO()
+        {
+            //Arrange
+            int nbOfCities = 4;
+            var cities = CityFaker.Generate(nbOfCities);
+            cities[0].Name = "Paris";
+            string name = cities[0].Name;
+            var citiesDTO = ToDTO.ToCitiesDto(cities);
+
+            MockCityRepository.GetCities().Returns(cities);
+
+            //Action
+            var result = CityController.GetCities(name);
+
+
+            // Assert
+            result.Should().BeOfType<ObjectResult>();
+            citiesDTO[0].Name.ShouldBeEquivalentTo(name);
+        }
+
     }
 }
