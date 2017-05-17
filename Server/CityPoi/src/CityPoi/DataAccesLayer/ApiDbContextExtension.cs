@@ -10,6 +10,18 @@ namespace CityPoi.DataAccesLayer
     {
         public static void EnsureSeedDataForContext(this ApiDbContext apiDbContext)
         {
+            if (!apiDbContext.Users.Any())
+            {
+                var user = new User()
+                {
+                    Username = "admin",
+                    Password = "8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918",
+                    Role = "Administrateur"
+                };
+                apiDbContext.Users.AddRange(user);
+                apiDbContext.SaveChanges();
+            }
+
             if (apiDbContext.Cities.Any())
             {
                 return;

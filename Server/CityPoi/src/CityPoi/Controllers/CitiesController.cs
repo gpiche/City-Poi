@@ -4,6 +4,8 @@ using CityPoi.DTOs;
 using CityPoi.Services;
 using Microsoft.AspNetCore.Mvc;
 using CityPoi.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace CityPoi.Controllers
 {
@@ -148,7 +150,7 @@ namespace CityPoi.Controllers
             return new NoContentResult(); // Pourquoi NoContentResult ?
         }
 
-
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{cityId}/pointsOfInterest/{id}")]
         public IActionResult DeletePointOfInterest(int cityId, int id, [FromBody] PoiDTO pointOfInterestData)
         {

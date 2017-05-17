@@ -61,7 +61,26 @@ namespace CityPoi.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("PointOfInterest");
+                    b.ToTable("PointOfInterests");
+                });
+
+            modelBuilder.Entity("CityPoi.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Password")
+                        .IsRequired();
+
+                    b.Property<string>("Role")
+                        .IsRequired();
+
+                    b.Property<string>("Username")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CityPoi.Entities.PointOfInterest", b =>

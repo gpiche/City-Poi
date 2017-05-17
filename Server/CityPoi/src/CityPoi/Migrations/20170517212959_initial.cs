@@ -24,7 +24,22 @@ namespace CityPoi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PointOfInterest",
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
+                    Password = table.Column<string>(nullable: false),
+                    Role = table.Column<string>(nullable: false),
+                    Username = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PointOfInterests",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -40,9 +55,9 @@ namespace CityPoi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PointOfInterest", x => x.Id);
+                    table.PrimaryKey("PK_PointOfInterests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PointOfInterest_Cities_CityId",
+                        name: "FK_PointOfInterests_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
@@ -50,15 +65,18 @@ namespace CityPoi.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PointOfInterest_CityId",
-                table: "PointOfInterest",
+                name: "IX_PointOfInterests_CityId",
+                table: "PointOfInterests",
                 column: "CityId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PointOfInterest");
+                name: "PointOfInterests");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Cities");
