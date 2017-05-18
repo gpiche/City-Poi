@@ -1,3 +1,18 @@
+
+#title {
+  margin-top: 10px;
+  font-family: cursive;
+}
+#logoutCss{
+  background-color: lavenderblush;
+  border: solid;
+  color: black;
+  height: 50px;
+  width:150px;
+  margin-top: 25px;
+}
+
+
 .cities li:hover {
   color: deeppink;
   font-style: italic;
@@ -5,8 +20,7 @@
   border-color: deeppink;
 }
 .cities {
-  margin-top: 100px;
-  margin-left: 100px;
+  margin-top: 50px;
   list-style-type: none;
   padding: 0px;
   width: 20em;
@@ -17,7 +31,6 @@
   left: 0;
   background-color: lavenderblush;
   margin: .5em;
-  padding: 1em 0;
   height: 3em;
   border-radius: 4px;
 }
@@ -35,7 +48,7 @@
 }
 
 .poi {
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 100px;
   list-style-type: none;
   padding: 0px;

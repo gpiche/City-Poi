@@ -8,9 +8,10 @@ using CityPoi.DataAccesLayer;
 namespace CityPoi.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170518032947_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.2");
@@ -65,26 +66,7 @@ namespace CityPoi.Migrations
 
                     b.HasIndex("CityId");
 
-                    b.ToTable("PointOfInterests");
-                });
-
-            modelBuilder.Entity("CityPoi.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Password")
-                        .IsRequired();
-
-                    b.Property<string>("Role")
-                        .IsRequired();
-
-                    b.Property<string>("Username")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
+                    b.ToTable("PointOfInterest");
                 });
 
             modelBuilder.Entity("CityPoi.Entities.PointOfInterest", b =>

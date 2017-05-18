@@ -15,9 +15,13 @@ namespace CityPoi.DTOs
         [Required]
         [RegularExpression("-?((1[0-7]|[0-9])?[0-9][,.][0-9]+|180[,.]0+)")]
         public string Longitude { get; set; }
+        [Required]
         public string Descritption { get; set; }
+        [Required]
         public string FullDescription { get; set; }
+        [Required]
         public string Logo { get; set; }
+        [Required]
         public string Picture { get; set; }
 
     }

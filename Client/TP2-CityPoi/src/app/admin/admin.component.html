@@ -1,8 +1,8 @@
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      <h2 id="adminCss">Bienvenue administrateur</h2>
+<div id="global" class="container">
+  <div id ="header" class="row">
+    <div id="title" class="col-md-9">
+      <h2 id="adminCss">Tableau de bord de l'administrateur</h2>
     </div>
     <div class="col-lg-3">
     <button id="logoutCss"(click)=" onLogoutClick()">Deconnexion</button>
@@ -11,9 +11,16 @@
   <div class ="row">
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
-  <div class="row">
+  <div class="row" >
     <div class="col-md-4">
+      <h1>Liste des citées :</h1>
      <ul class="cities">
         <li *ngFor="let city of cities  | async " (click)="getPoiForACity(city.key)"
             (click)="onSelectCity(city)"
@@ -23,6 +30,7 @@
       </ul>
     </div>
     <div class="col-md-4">
+      <h2>Les points d'interêt pour : {{selectedCity.name}}</h2>
       <ul class="poi">
         <li *ngFor="let pointOfInterest of poi | async">
           <span class="poiName">{{pointOfInterest.name}}</span>

@@ -36,6 +36,7 @@ namespace CityPoi.DataAccesLayer
                     Description = "Ville renomé pour sa poutine",
 
                 },
+
                 new City()
                 {
                     Name = "New-York",
@@ -43,6 +44,7 @@ namespace CityPoi.DataAccesLayer
                     Description = "Connu aussi sous le nom de la grosse pomme",
 
                 },
+
                 new City()
                 {
                     Name = "Paris",
@@ -50,11 +52,36 @@ namespace CityPoi.DataAccesLayer
                     Description = "Ville lumineuse et romantique",
 
                 },
+
+
                 new City()
+                {
+                    Name = "Montréal",
+                    Country = "Canada",
+                    Description = "La grande métropole de la province du Québec",
+
+                },
+
+                new City()
+                {
+                    Name = "Bayonne",
+                    Country = "France",
+                    Description = "Connu pour son très bon jambon",
+
+                },
+                    
+                    new City()
                 {
                     Name = "Kuala Lumpur",
                     Country = "Malaisie",
-                    Description = "Capitale de la Malaisie"
+                    Description = "Capitale de la Malaisie",
+                },
+
+                new City()
+                {
+                    Name = "Toronto",
+                    Country = "Canada",
+                    Description = "Capitale du Canada",
                 }
             };
 
@@ -156,8 +183,51 @@ namespace CityPoi.DataAccesLayer
                 Latitude = "48.8841232",
                 Longitude = "2.33225189999996"
             });
+            cities[3].PointsOfInterests.Add(new PointOfInterest()
+            {
+                Name = "MontRoyal",
+                Descritption = "Mont en plein Montréal, belle vue garantie !",
+                FullDescritption = "Le mont Royal est une colline qui domine la ville de Montréal, au Québec. Il s\'agit de l\'une des dix collines montérégiennes situées dans le sud-ouest de la province.",
+                Logo = "https://www.saint-joseph.org/wp-content/uploads/2016/08/logo.png",
+                Picture = "http://www.ameriquefrancaise.org/media-3643/mont_royal_7.JPG",
+                Latitude = "45.5125819",
+                Longitude = "-73.64683070000001"
+            });
 
             cities[3].PointsOfInterests.Add(new PointOfInterest()
+            {
+                Name = "La Ronte",
+                Descritption = "Célebre parc d'attraction",
+                FullDescritption = "La Ronde est un parc d\'attractions de 591 000 m2 (146 acres) situé sur l\'île Sainte-Hélène, à Montréal. Le parc d\'attractions appartient à Six Flags sous un bail emphytéotique avec la ville de Montréal, depuis 2001. Depuis l\'ouverture du parc, dans le cadre de l\'Exposition universelle de 1967, ses opérations étaient assurées par la ville de Montréal, de 1967 à 2001. Le parc est ouvert de la mi-mai à la fin octobre. Le parc, qui compte exactement 42 manèges et attractions, attire environ 1,2 million de visiteurs chaque année1.\r\n\r\nPlusieurs évènements se tiennent dans le parc à chaque année, dont l\'International des Feux Loto-Québec, depuis 1985. Cette compétition d\'art pyrotechnique, qui bénéficie d\'une renommée internationale, s\'y tient pendant les mois de juin à août. La grande fête de l\'Halloween est un évènement qui, pour sa part, se tient durant les fins de semaine du mois d\'octobre.",
+                Logo = "https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/La_Ronde_%28logo%29.svg/1200px-La_Ronde_%28logo%29.svg.png",
+                Picture = "https://images.trvl-media.com/media/content/shared/images/travelguides/destination/178288/La-Ronde-49269.jpg",
+                Latitude = "45.52135199999999",
+                Longitude = "-73.53384399999999"
+            });
+
+            cities[4].PointsOfInterests.Add(new PointOfInterest()
+            {
+                Name = "Camping Campéole",
+                Descritption = "Appartement hotel très chaleureux au bord de la plage",
+                FullDescritption = "Reprise en 1996 par André Trigano, la société Campéole regroupait à l’époque une quinzaine de terrains de camping installés sur des communes. Aujourd’hui Campéole vous offre près de 80 lieux d’exception en France, Espagne et Portugal, pour profiter le temps d’un week-end ou de vacances de la convivialité du camping.\r\n\r\nAu bord des plus beaux lacs ou de plages magnifiques, à proximité de régions touristiques au patrimoine culturel internationalement renommé, les campings Campéole vous offrent des vacances au contact de la nature, des campings les pieds dans l\'eau, des environnements exceptionnels pour pratiquer le sport de votre choix... Chacun des campings Campéole vous réserve son lot d\'émotions et de souvenirs.\r\n",
+                Logo = "https://lh6.googleusercontent.com/-CwY6NZ7zaIE/AAAAAAAAAAI/AAAAAAAAADo/YlHwkEyILtM/photo.jpg",
+                Picture = "http://www.toocamp.com/medias/campings/large/camping-lou-pignada-23937-01.jpg",
+                Latitude = "43.5746403",
+                Longitude = "-1.4836639999999761"
+            });
+
+            cities[4].PointsOfInterests.Add(new PointOfInterest()
+            {
+                Name = "Hossegor",
+                Descritption = "Magnifique petite ville connu pour ces belles plages et le surf",
+                FullDescritption = "Soorts-Hossegor, en gascon Sòrts e Òssagòr, est une commune française située dans le département des Landes en région Nouvelle-Aquitaine.\r\n\r\nElle est réputée pour ses spots de surf tels que la Gravière ainsi que pour son golf figurant parmi les plus beaux d\'Europe.\r\n\r\nSes habitants sont appelés les Hossegoriens.Soorts-Hossegor est une station balnéaire de la Côte d\'Argent située en Maremne, entre la forêt des Landes et l\'océan Atlantique, dans lequel se jettent le cours du Bourret et du Boudigau, vestige de l\'ancien cours de l\'Adour. Elle est limitrophe des communes de Seignosse et de Capbreton, avec qui elle partage le port du Bourret (mais pas administrativement).",
+                Logo = "http://www.hossegor.fr/skins/desktop/images/widget/header/logo.png",
+                Picture = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRofxi3VUX4GF7ATt3fSWCMAoajjDmthB7q5Uut3v0A7jhWOmguMA",
+                Latitude = "43.6646192",
+                Longitude = "-1.3976870999999846"
+            });
+
+            cities[5].PointsOfInterests.Add(new PointOfInterest()
             {
                 Name = "Tour Petronas",
                 Descritption = "Les tours jumelles Petronas de Kuala Lumpur en Malaisie ont été conçues par l’architecte argentin Cesar Pelli et inaugurées en 1998. ",
