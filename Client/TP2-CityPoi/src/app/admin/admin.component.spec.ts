@@ -8,8 +8,12 @@ import {AdminService} from './admin.service';
 import {fakeAsync, tick} from "@angular/core/testing";
 import {PointOfInterest} from '../Shared/PointOfInterest';
 import {City} from '../Shared/City';
+import { Headers, Http } from '@angular/http';
+import {RequestOptions, Request, RequestMethod} from '@angular/http';
 import { NguiMapModule} from '@ngui/map';
+import {Body} from "@angular/http/src/body";
 
+// Tests admin.component.ts
 describe('AdminComponent', () => {
   let adminComponent: AdminComponent;
   let mockAuthentificationService;
@@ -170,6 +174,40 @@ describe('AdminComponent', () => {
   });
 
 });
+
+describe('AdminService', () => {
+  let adminService: AdminService;
+  let mockHttp;
+
+
+  beforeEach(() => {
+
+    mockHttp = jasmine.createSpyObj('Http', ['delete']);
+    adminService = new AdminService(
+      mockHttp
+    );
+  });
+
+  describe('delete()', () => {
+    it('should call http.delete()', fakeAsync(() => {
+      // Arrange
+      const fakeHeader = new Headers({'Content-Type': 'application/json'});
+      let fakePoi = {id: 1, name: 'any', latitude: 'any', longitude: 'any', descritption: 'any', fullDescription: 'any',
+          logo: 'any', picture: 'any'}
+      const fakeCityId = 1;
+      // Action
+      adminService.delete(fakeCityId, fakePoi.id, fakePoi);
+      tick();
+      // Assert
+      expect(mockHttp.then).toEqual(Promise.resolve());
+
+    }));
+  });
+
+});
+
+
+
 
 
 
