@@ -8,7 +8,7 @@ using CityPoi.DataAccesLayer;
 namespace CityPoi.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20170511224950_initial")]
+    [Migration("20170518032947_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,14 +41,17 @@ namespace CityPoi.Migrations
 
                     b.Property<int>("CityId");
 
-                    b.Property<string>("Descritption");
+                    b.Property<string>("Descritption")
+                        .IsRequired();
 
-                    b.Property<string>("FullDescritption");
+                    b.Property<string>("FullDescritption")
+                        .IsRequired();
 
                     b.Property<string>("Latitude")
                         .IsRequired();
 
-                    b.Property<string>("Logo");
+                    b.Property<string>("Logo")
+                        .IsRequired();
 
                     b.Property<string>("Longitude")
                         .IsRequired();
@@ -56,7 +59,8 @@ namespace CityPoi.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<string>("Picture");
+                    b.Property<string>("Picture")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
