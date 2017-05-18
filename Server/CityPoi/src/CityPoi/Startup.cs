@@ -49,6 +49,7 @@ namespace CityPoi
             services.AddMvc();
 
             services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             
 

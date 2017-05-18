@@ -10,6 +10,18 @@ namespace CityPoi.DataAccesLayer
     {
         public static void EnsureSeedDataForContext(this ApiDbContext apiDbContext)
         {
+            if (!apiDbContext.Users.Any())
+            {
+                var user = new User()
+                {
+                    Username = "admin",
+                    Password = "8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918",
+                    Role = "Administrateur"
+                };
+                apiDbContext.Users.AddRange(user);
+                apiDbContext.SaveChanges();
+            }
+
             if (apiDbContext.Cities.Any())
             {
                 return;
@@ -41,6 +53,7 @@ namespace CityPoi.DataAccesLayer
 
                 },
 
+
                 new City()
                 {
                     Name = "Montréal",
@@ -56,13 +69,19 @@ namespace CityPoi.DataAccesLayer
                     Description = "Connu pour son très bon jambon",
 
                 },
+                    
+                    new City()
+                {
+                    Name = "Kuala Lumpur",
+                    Country = "Malaisie",
+                    Description = "Capitale de la Malaisie",
+                },
 
                 new City()
                 {
                     Name = "Toronto",
                     Country = "Canada",
                     Description = "Capitale du Canada",
-
                 }
             };
 
@@ -208,6 +227,17 @@ namespace CityPoi.DataAccesLayer
                 Longitude = "-1.3976870999999846"
             });
 
+            cities[5].PointsOfInterests.Add(new PointOfInterest()
+            {
+                Name = "Tour Petronas",
+                Descritption = "Les tours jumelles Petronas de Kuala Lumpur en Malaisie ont été conçues par l’architecte argentin Cesar Pelli et inaugurées en 1998. ",
+                FullDescritption = "long description",
+                Logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Petronas_Panorama_II.jpg/260px-Petronas_Panorama_II.jpg",
+                Picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Petronas_Panorama_II.jpg/260px-Petronas_Panorama_II.jpg",
+                Latitude = "3.15785",
+                Longitude = "101.71165"
+            });
+            
 
             apiDbContext.Cities.AddRange(cities);
             apiDbContext.SaveChanges();

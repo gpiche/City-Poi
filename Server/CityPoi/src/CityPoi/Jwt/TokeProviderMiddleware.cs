@@ -3,26 +3,34 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+using CityPoi.DataAccesLayer;
+using CityPoi.Services;
 
 //code inspiré de : https://stormpath.com/blog/token-authentication-asp-net-core
 
 namespace jwt_exemple.Jwt
 {
+    
     public class TokenProviderMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly TokenProviderOptions _options;
+        private IUserRepository _userRepository;
 
         public TokenProviderMiddleware(
             RequestDelegate next,
-            IOptions<TokenProviderOptions> options)
+            IOptions<TokenProviderOptions> options,
+            IUserRepository userRepository)
         {
             _next = next;
             _options = options.Value;
+            _userRepository = userRepository;
         }
 
         public Task Invoke(HttpContext context)
@@ -106,17 +114,16 @@ namespace jwt_exemple.Jwt
 
         private Task<ClaimsIdentity> GetIdentity(string username, string password)
         {
-            // DON'T do this in production, obviously!
-            // In a real application, you’d plug this into your user database or an identity 
-            //framework like ASP.NET Core Identity.
-            if (username == "Mickey" && password == "qwerty")
+            var hashPassword = GetHashString(password);
+
+            if (_userRepository.IsValid(username, hashPassword))
             {
                 return Task.FromResult(
                     new ClaimsIdentity(
                         new GenericIdentity(username, "Token"),
                         new Claim[]
                         {
-                            new Claim(ClaimTypes.Role,"Administrator"),
+                            new Claim(ClaimTypes.Role, _userRepository.getRole(username)),
                         }));
             }
 
@@ -125,5 +132,23 @@ namespace jwt_exemple.Jwt
         }
 
         public static long ToUnixEpochDate(DateTime date) => new DateTimeOffset(date).ToUniversalTime().ToUnixTimeSeconds();
+
+
+
+        private static byte[] GetHash(string inputString)
+        {
+            HashAlgorithm algorithm = SHA256.Create();  
+            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+        }
+
+        private static string GetHashString(string inputString)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in GetHash(inputString))
+                sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
+        }
     }
+
 }

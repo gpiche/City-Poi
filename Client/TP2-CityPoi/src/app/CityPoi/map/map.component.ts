@@ -51,13 +51,13 @@ export class MapComponent implements OnInit, OnChanges {
     var contentString = '<div id="content">' +
       '<div id="siteNotice">' +
         '<div' +
-      '</div>' + '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDvxGceA1mrFKBFrr9vboIlQxgrwK3QOgn01omSp9MaC_Oixdd" alt="some_text" style="width:100px;height:100px;">' +
+      '</div>' + '<img src=' + poi.logo + ' style="width:100px;height:100px;">' +
       '<h3 >' + poi.name + '</h3>' +
       '</div>' +
       '<div id="bodyContent">' +
       poi.descritption +
       '</div>' +
-        '<button class="bg-primary">Voir les détails</button>' +
+        '<a href=' + "/poi-detail" + ' >Voir les détails</a>' +
       '</div>';
     const infoWindow = new InfoWindow()
     const position = new LatLng(parseFloat(poi.latitude), parseFloat(poi.longitude));

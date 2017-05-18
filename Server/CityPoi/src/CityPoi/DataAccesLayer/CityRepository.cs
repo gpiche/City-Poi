@@ -57,14 +57,13 @@ namespace CityPoi.DataAccesLayer
 
         public PointOfInterest GetPointOfInterestForCity(int cityId, int pointOfInterestId)
         {
-            var city = _context.Cities.Include(c => c.PointsOfInterests).FirstOrDefault(x => x.Id == cityId);
-            return city.PointsOfInterests.FirstOrDefault(pointOfInterest => pointOfInterest.Id == pointOfInterestId);
+            return _context.PointOfInterests.FirstOrDefault(poi => poi.CityId == cityId);
         }
 
         public IEnumerable<PointOfInterest> GetPointsOfInterestForCity(int cityId)
         {
-            var city = _context.Cities.Include(c => c.PointsOfInterests).FirstOrDefault(x => x.Id == cityId);
-            return city.PointsOfInterests.ToList();
+            return _context.PointOfInterests.Where(poi => poi.CityId == cityId).ToList();
+ 
         }
 
  
@@ -79,7 +78,7 @@ namespace CityPoi.DataAccesLayer
         public void DeletePointOfInterest(PointOfInterest pointOfInterest)
         {
             var city = _context.Cities.Include(c => c.PointsOfInterests).FirstOrDefault(x => x.Id == pointOfInterest.CityId);
-            var pointOfInterestToRemove = city.PointsOfInterests.FirstOrDefault(p => p.Id == pointOfInterest.Id);
+            var pointOfInterestToRemove = _context.PointOfInterests.FirstOrDefault(poi => poi == pointOfInterest);
 
              city.PointsOfInterests.Remove(pointOfInterestToRemove);
             _context.Update(city);
