@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {ModalService} from './Shared/modal.service';
 import {ModalModule} from 'angular2-modal';
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
+import { PoiDetailComponent } from './poi-detail/poi-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
     UnauthorizedComponent,
     AdminComponent,
     DashboardComponent,
+    PoiDetailComponent,
 
   ],
   imports: [

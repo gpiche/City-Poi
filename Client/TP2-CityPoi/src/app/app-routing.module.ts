@@ -9,12 +9,14 @@ import {LoginComponent} from './login/login.component';
 import {AdminComponent} from './admin/admin.component';
 
 import {DashboardComponent} from './dashboard/dashboard.component'
+import {PoiDetailComponent} from "./poi-detail/poi-detail.component";
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: DashboardComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard] },
-  { path: 'unauthorized', component: UnauthorizedComponent }
+  { path: 'unauthorized', component: UnauthorizedComponent },
+  {path: 'poi-detail', component: PoiDetailComponent, data : {data : 'some value'}}
 ];
 
 @NgModule({

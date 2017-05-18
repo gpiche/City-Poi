@@ -49,6 +49,12 @@ namespace CityPoi.DataAccesLayer
                     Country = "France",
                     Description = "Ville lumineuse et romantique",
 
+                },
+                new City()
+                {
+                    Name = "Kuala Lumpur",
+                    Country = "Malaisie",
+                    Description = "Capitale de la Malaisie"
                 }
             };
 
@@ -151,6 +157,17 @@ namespace CityPoi.DataAccesLayer
                 Longitude = "2.33225189999996"
             });
 
+            cities[3].PointsOfInterests.Add(new PointOfInterest()
+            {
+                Name = "Tour Petronas",
+                Descritption = "Les tours jumelles Petronas de Kuala Lumpur en Malaisie ont été conçues par l’architecte argentin Cesar Pelli et inaugurées en 1998. ",
+                FullDescritption = "long description",
+                Logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Petronas_Panorama_II.jpg/260px-Petronas_Panorama_II.jpg",
+                Picture = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Petronas_Panorama_II.jpg/260px-Petronas_Panorama_II.jpg",
+                Latitude = "3.15785",
+                Longitude = "101.71165"
+            });
+            
 
             apiDbContext.Cities.AddRange(cities);
             apiDbContext.SaveChanges();
