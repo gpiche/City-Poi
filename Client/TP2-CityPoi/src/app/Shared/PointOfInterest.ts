@@ -8,4 +8,7 @@ export class PointOfInterest{
   latitude: string;
   longitude: string;
   descritption: string;
+  fullDescription: string;
+  logo: string;
+  picture: string;
 }
