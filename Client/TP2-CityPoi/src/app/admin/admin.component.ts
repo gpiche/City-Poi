@@ -24,7 +24,6 @@ export class AdminComponent implements OnInit, OnChanges {
 
   cities: Observable<City[]>;
   poi: Observable<PointOfInterest[]>;
-  resultModalWindow: boolean = false;
   selectedCity: City;
   selectedPoi: PointOfInterest;
 
@@ -69,12 +68,13 @@ export class AdminComponent implements OnInit, OnChanges {
   getPoiForACity(id: number) {
     this.poi = this.citySearchService.getPoiForACity(id);
   }
-
+// La page ne recharge pas après la supression
   openModal(message: string) {
     this.modalService.confirm(message, ' Supprimer ')
       .then(() => {
         this.delete(this.selectedCity.key, this.selectedPoi.id)
         this.toastrService.success('Success');
+        if (this.selectedCity === this.selectedCity) { this.selectedCity = null; }
       })
       .catch(() => this.toastrService.error('Canceled'));
   }
