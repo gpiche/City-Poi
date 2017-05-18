@@ -45,13 +45,13 @@ namespace CityPoi.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
                     CityId = table.Column<int>(nullable: false),
-                    Descritption = table.Column<string>(nullable: true),
-                    FullDescritption = table.Column<string>(nullable: true),
+                    Descritption = table.Column<string>(nullable: false),
+                    FullDescritption = table.Column<string>(nullable: false),
                     Latitude = table.Column<string>(nullable: false),
-                    Logo = table.Column<string>(nullable: true),
+                    Logo = table.Column<string>(nullable: false),
                     Longitude = table.Column<string>(nullable: false),
                     Name = table.Column<string>(nullable: false),
-                    Picture = table.Column<string>(nullable: true)
+                    Picture = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
